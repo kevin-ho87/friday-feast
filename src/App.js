@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
-import Home from './pages/Home'
-import About from './pages/About'
+import AsyncLoader from './components/AsyncLoader'
+
+const Home = AsyncLoader(() => import('./pages/Home'))
+const About = AsyncLoader(() => import('./pages/About'))
+
 
 class App extends Component {
   constructor(props) {
