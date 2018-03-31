@@ -4,7 +4,7 @@ import { Route, Link } from 'react-router-dom'
 import AsyncLoader from './components/AsyncLoader'
 
 const Home = AsyncLoader(() => import('./pages/Home'))
-const About = AsyncLoader(() => import('./pages/About'))
+const Admin = AsyncLoader(() => import('./pages/Admin'))
 
 
 class App extends Component<void> {
@@ -14,12 +14,12 @@ class App extends Component<void> {
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
+            <li><Link to="/admin">Admin</Link></li>
           </ul>
         </nav>
         <main>
           <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
+          <Route path="/admin" component={Admin} />
         </main>
       </div>
     )
