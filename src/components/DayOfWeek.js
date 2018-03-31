@@ -1,8 +1,13 @@
-import React from 'react'
+// @flow
+import * as React from 'react'
 
-const DayOfWeek = ({dayIndex = 5}) => {
+type Props = {
+  dayIndex: number
+}
+
+const DayOfWeek = ({ dayIndex }: Props) => {
   const today = new Date()
-  const theDay = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + dayIndex * 1)
+  const theDay = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + dayIndex)
 
   return (
     <p>{`
@@ -12,6 +17,10 @@ const DayOfWeek = ({dayIndex = 5}) => {
       ${theDay.getFullYear()}
     `}</p>
   )
+}
+
+DayOfWeek.defaultProps = {
+  dayIndex: 5
 }
 
 export default DayOfWeek
