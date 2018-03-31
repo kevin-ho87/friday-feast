@@ -20,8 +20,10 @@ class App extends Component {
             <li><Link to="/about">About</Link></li>
           </ul>
         </nav>
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
+        <main>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+        </main>
       </div>
     )
   }
