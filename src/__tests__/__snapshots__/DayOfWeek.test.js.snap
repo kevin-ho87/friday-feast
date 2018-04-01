@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Date component should render test enzyme renders Tuesday in snapshot 1`] = `
+<p>
+  
+      Tuesday
+      3
+      April
+      2018
+    
+</p>
+`;
+
+exports[`Date component should render test enzyme snapshot works 1`] = `
+<p>
+  
+      Friday
+      6
+      April
+      2018
+    
+</p>
+`;
