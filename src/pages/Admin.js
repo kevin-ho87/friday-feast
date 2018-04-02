@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react'
+import UserItem from '../components/UserItem'
 
 type State = {
   value: string,
@@ -52,7 +53,7 @@ class Admin extends Component<{}, State> {
     const userList = this.state.users.map(user => {
       return (
         <li key={user.uid}>
-          {user.name}
+          <UserItem name={user.name} />
         </li>
       )
     })
@@ -63,7 +64,7 @@ class Admin extends Component<{}, State> {
         <p>List of users</p>
 
         {this.state.users.length > 0 &&
-          <ul> {userList} </ul>
+          <ul>{userList}</ul>
         }
 
         <form onSubmit={this.handleSubmit}>
