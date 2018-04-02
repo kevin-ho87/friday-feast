@@ -6,8 +6,8 @@ type Props = {
 }
 
 const DayOfWeek = ({ dayIndex }: Props) => {
-  const today = new Date()
-  const theDay = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + dayIndex)
+  const today: Date = new Date()
+  const theDay: Date = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + dayIndex)
 
   return (
     <p>{`
