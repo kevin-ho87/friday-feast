@@ -4,8 +4,7 @@ import styled from 'styled-components'
 import DayOfWeek from '../components/DayOfWeek'
 
 const Holder = styled.div`
-  font-family: sans-serif;
-  background-color: #eee;
+  background-color: #fff;
   width: 400px;
   padding: 1rem;
   border-left: 4px solid #444;

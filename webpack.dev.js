@@ -7,5 +7,29 @@ module.exports = merge(common, {
   devServer: {
     contentBase: './dist',
     historyApiFallback: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: "css-loader",
+            options: { sourceMap: true }
+          },
+          {
+            loader: "sass-loader",
+            options: { sourceMap: true }
+          },
+          {
+            loader: 'postcss-loader',
+            options: { sourceMap: true }
+          }
+        ]
+      }
+    ]
   }
 });
