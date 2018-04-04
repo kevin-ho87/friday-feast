@@ -39,7 +39,7 @@ class UserItem extends React.Component<Props> {
   }
 
   removeHandler() {
-    const { name, uid } = this.props
+    const { uid } = this.props
     this.props.onRemove(uid)
   }
 
