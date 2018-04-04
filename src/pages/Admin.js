@@ -9,8 +9,9 @@ type State = {
 }
 
 class Admin extends Component<{}, State> {
-  handleChange: () => void;
-  handleSubmit: () => void;
+  handleChange: () => void
+  handleSubmit: () => void
+  onRemove: () => void
 
   constructor() {
     super()
@@ -23,6 +24,7 @@ class Admin extends Component<{}, State> {
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.onRemove = this.onRemove.bind(this)
   }
 
   handleChange(event: SyntheticInputEvent<HTMLInputElement>) {
@@ -33,7 +35,7 @@ class Admin extends Component<{}, State> {
 
   handleSubmit(event: SyntheticEvent<>) {
     event.preventDefault()
-    const trimmedVal = this.state.value.trim()
+    const trimmedVal: string = this.state.value.trim()
 
     const userObj = {
       name: trimmedVal,
@@ -49,11 +51,21 @@ class Admin extends Component<{}, State> {
     }
   }
 
+  onRemove(id: number) {
+    this.setState(prevState => ({
+      users: prevState.users.filter(item => item.uid !== id)
+    }))
+  }
+
   render() {
     const userList = this.state.users.map(user => {
       return (
         <li key={user.uid}>
-          <UserItem name={user.name} />
+          <UserItem
+            name={user.name}
+            uid={user.uid}
+            onRemove={this.onRemove}
+          />
         </li>
       )
     })
