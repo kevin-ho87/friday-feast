@@ -12,6 +12,7 @@ class Admin extends Component<{}, State> {
   handleChange: () => void
   handleSubmit: () => void
   onRemove: () => void
+  handleUserEdit: () => void
 
   constructor() {
     super()
@@ -25,6 +26,7 @@ class Admin extends Component<{}, State> {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.onRemove = this.onRemove.bind(this)
+    this.handleUserEdit = this.handleUserEdit.bind(this)
   }
 
   handleChange(event: SyntheticInputEvent<HTMLInputElement>) {
@@ -57,6 +59,10 @@ class Admin extends Component<{}, State> {
     }))
   }
 
+  handleUserEdit(newText: string, id: number) {
+    console.log('user edited', newText, id)
+  }
+
   render() {
     const userList = this.state.users.map(user => {
       return (
@@ -64,6 +70,7 @@ class Admin extends Component<{}, State> {
           <UserItem
             name={user.name}
             uid={user.uid}
+            userEdited={this.handleUserEdit}
             onRemove={this.onRemove}
           />
         </li>
