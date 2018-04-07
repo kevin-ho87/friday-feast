@@ -38,7 +38,7 @@ type State = {
 }
 
 class UserItem extends React.Component<Props, State> {
-  input: ?HTMLInputElement
+  myInput: ?HTMLInputElement
   removeHandler: () => void
   triggerEdit: () => void
   cancelEdit: () => void
@@ -66,9 +66,10 @@ class UserItem extends React.Component<Props, State> {
   }
 
   triggerEdit() {
-    // console.log('edit click')
     this.setState({ isEdit: true }, () => {
-      this.input.focus()
+      if ( this.myInput ) {
+        this.myInput.focus()
+      }
     })
   }
 
@@ -103,7 +104,7 @@ class UserItem extends React.Component<Props, State> {
             <div>
               <form onSubmit={this.handleSet}>
                 <input
-                  ref={input => (this.input = input)}
+                  ref={input => {this.myInput = input}}
                   value={this.state.name}
                   onChange={this.onNameChange}
                   type="text"/>
