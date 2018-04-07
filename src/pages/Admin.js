@@ -1,6 +1,14 @@
 // @flow
 import React, { Component } from 'react'
 import UserItem from '../components/UserItem'
+import styled from 'styled-components'
+import firebase from '../fire'
+
+const SaveHolder = styled.div`
+  background-color: #fff;
+  padding: 1rem;
+  margin-top: 1rem;
+`
 
 type State = {
   value: string,
@@ -10,10 +18,11 @@ type State = {
 
 class Admin extends Component<{}, State> {
   handleChange: () => void
-  handleSubmit: () => void
+  addUser: () => void
   onRemove: () => void
   handleUserEdit: () => void
   onMove: () => void
+  saveData: () => void
 
   constructor() {
     super()
@@ -25,10 +34,11 @@ class Admin extends Component<{}, State> {
     }
 
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.addUser = this.addUser.bind(this)
     this.onRemove = this.onRemove.bind(this)
     this.handleUserEdit = this.handleUserEdit.bind(this)
     this.onMove = this.onMove.bind(this)
+    this.saveData = this.saveData.bind(this)
   }
 
   handleChange(event: SyntheticInputEvent<HTMLInputElement>) {
@@ -37,7 +47,7 @@ class Admin extends Component<{}, State> {
     })
   }
 
-  handleSubmit(event: SyntheticEvent<>) {
+  addUser(event: SyntheticEvent<>) {
     event.preventDefault()
     const trimmedVal: string = this.state.value.trim()
 
@@ -98,6 +108,32 @@ class Admin extends Component<{}, State> {
     }))
   }
 
+  componentDidMount() {
+    //Firebase in here
+    const itemsRef = firebase.database().ref('users')
+    const currUID = firebase.database().ref('usersCurrentUID')
+
+    itemsRef.once('value', (snapshot) => {
+      this.setState({
+        users: snapshot.val()
+      })
+    })
+
+    currUID.once('value', (snapshot) => {
+      this.setState({
+        uid: snapshot.val()
+      })
+    })
+  }
+
+  saveData() {
+    //Firebase in here
+    const itemsRef = firebase.database().ref('users')
+    const currUID = firebase.database().ref('usersCurrentUID')
+    itemsRef.set(this.state.users)
+    currUID.set(this.state.uid)
+  }
+
   render() {
     const userList = this.state.users.map((user, index) => {
       return (
@@ -119,7 +155,7 @@ class Admin extends Component<{}, State> {
         <h1>Admin page</h1>
         <p>List of users</p>
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.addUser}>
           <input name="user-name"
             value={this.state.value}
             onChange={this.handleChange}
@@ -130,6 +166,11 @@ class Admin extends Component<{}, State> {
         {this.state.users.length > 0 &&
           <ul>{userList}</ul>
         }
+
+        <SaveHolder>
+          <button type="button" onClick={this.saveData}>Save</button>
+          <button type="button">Cancel</button>
+        </SaveHolder>
       </div>
     )
   }
