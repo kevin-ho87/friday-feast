@@ -28,8 +28,10 @@ const Button = styled.button`
 type Props = {
   name: string,
   uid: number,
+  index: number,
   onRemove: (number) => void,
-  userEdited: (string, number) => void
+  userEdited: (string, number) => void,
+  onMove: (?number, number) => void
 }
 
 type State = {
@@ -44,6 +46,7 @@ class UserItem extends React.Component<Props, State> {
   cancelEdit: () => void
   handleSet: () => void
   onNameChange: () => void
+  move: (number) => void
 
   constructor(props: Props) {
     super(props)
@@ -58,6 +61,7 @@ class UserItem extends React.Component<Props, State> {
     this.cancelEdit = this.cancelEdit.bind(this)
     this.handleSet = this.handleSet.bind(this)
     this.onNameChange = this.onNameChange.bind(this)
+    // this.move = this.move.bind(this)
   }
 
   removeHandler() {
@@ -96,9 +100,15 @@ class UserItem extends React.Component<Props, State> {
     })
   }
 
+  move(dir: number) {
+    this.props.onMove(dir, this.props.index)
+  }
+
   render() {
     return (
       <Holder>
+        <button type="button" data-dir="-1" onClick={this.move.bind(this,-1)}>⬆️ Up</button>
+        <button type="button" data-dir="1" onClick={this.move.bind(this,1)}>⬇️ Down</button>
         { this.state.isEdit ?
           (
             <div>

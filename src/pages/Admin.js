@@ -13,6 +13,7 @@ class Admin extends Component<{}, State> {
   handleSubmit: () => void
   onRemove: () => void
   handleUserEdit: () => void
+  onMove: () => void
 
   constructor() {
     super()
@@ -27,6 +28,7 @@ class Admin extends Component<{}, State> {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.onRemove = this.onRemove.bind(this)
     this.handleUserEdit = this.handleUserEdit.bind(this)
+    this.onMove = this.onMove.bind(this)
   }
 
   handleChange(event: SyntheticInputEvent<HTMLInputElement>) {
@@ -74,13 +76,37 @@ class Admin extends Component<{}, State> {
     }))
   }
 
+  onMove(direction: number, currIndex: number) {
+    const newIndex: number = currIndex + direction
+
+    if (newIndex < 0 || newIndex >= this.state.users.length) {
+      return
+    }
+
+    const excludedArr = this.state.users.filter((item, index) => index !== currIndex)
+
+    const newArr = [
+      ...excludedArr.slice(0, newIndex),
+      {
+        ...this.state.users[currIndex]
+      },
+      ...excludedArr.slice(newIndex)
+    ]
+
+    this.setState(prevState => ({
+      users: newArr
+    }))
+  }
+
   render() {
-    const userList = this.state.users.map(user => {
+    const userList = this.state.users.map((user, index) => {
       return (
         <li key={user.uid}>
           <UserItem
             name={user.name}
+            index={index}
             uid={user.uid}
+            onMove={this.onMove}
             userEdited={this.handleUserEdit}
             onRemove={this.onRemove}
           />
