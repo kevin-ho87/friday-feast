@@ -38,10 +38,11 @@ type State = {
 }
 
 class UserItem extends React.Component<Props, State> {
+  input: ?HTMLInputElement
   removeHandler: () => void
-  editHandler: () => void
+  triggerEdit: () => void
   cancelEdit: () => void
-  handleSave: () => void
+  handleSet: () => void
   onNameChange: () => void
 
   constructor(props: Props) {
@@ -53,9 +54,9 @@ class UserItem extends React.Component<Props, State> {
     }
 
     this.removeHandler = this.removeHandler.bind(this)
-    this.editHandler = this.editHandler.bind(this)
+    this.triggerEdit = this.triggerEdit.bind(this)
     this.cancelEdit = this.cancelEdit.bind(this)
-    this.handleSave = this.handleSave.bind(this)
+    this.handleSet = this.handleSet.bind(this)
     this.onNameChange = this.onNameChange.bind(this)
   }
 
@@ -64,25 +65,28 @@ class UserItem extends React.Component<Props, State> {
     this.props.onRemove(uid)
   }
 
-  editHandler() {
-    console.log('edit click')
-    this.setState({ isEdit: true })
+  triggerEdit() {
+    // console.log('edit click')
+    this.setState({ isEdit: true }, () => {
+      this.input.focus()
+    })
   }
 
   cancelEdit() {
-    console.log('cancel edit')
+    // console.log('cancel edit')
     this.setState({
       isEdit: false,
       name: this.props.name
     })
   }
 
-  handleSave(event: SyntheticEvent<>) {
+  handleSet(event: SyntheticEvent<>) {
     event.preventDefault()
-    console.log('edit save')
 
     this.props.userEdited(this.state.name, this.props.uid)
-
+    this.setState({
+      isEdit: false
+    })
   }
 
   onNameChange(event: SyntheticInputEvent<HTMLInputElement>) {
@@ -97,8 +101,9 @@ class UserItem extends React.Component<Props, State> {
         { this.state.isEdit ?
           (
             <div>
-              <form onSubmit={this.handleSave}>
+              <form onSubmit={this.handleSet}>
                 <input
+                  ref={input => (this.input = input)}
                   value={this.state.name}
                   onChange={this.onNameChange}
                   type="text"/>
@@ -111,7 +116,7 @@ class UserItem extends React.Component<Props, State> {
           (
             <div>
               <ItemText>{ this.props.name }</ItemText>
-              <Button type="button" onClick={this.editHandler}>Edit</Button>
+              <Button type="button" onClick={this.triggerEdit}>Edit</Button>
               <Button type="button" onClick={this.removeHandler}>Delete</Button>
             </div>
           )

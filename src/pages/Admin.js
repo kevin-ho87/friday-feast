@@ -60,7 +60,18 @@ class Admin extends Component<{}, State> {
   }
 
   handleUserEdit(newText: string, id: number) {
-    console.log('user edited', newText, id)
+    const index: number = this.state.users.findIndex(({ uid }) => uid === id)
+
+    this.setState(prevState => ({
+      users: [
+        ...prevState.users.slice(0, index),
+        {
+          ...prevState.users[index],
+          name: newText
+        },
+        ...prevState.users.slice(index + 1)
+      ]
+    }))
   }
 
   render() {
@@ -82,10 +93,6 @@ class Admin extends Component<{}, State> {
         <h1>Admin page</h1>
         <p>List of users</p>
 
-        {this.state.users.length > 0 &&
-          <ul>{userList}</ul>
-        }
-
         <form onSubmit={this.handleSubmit}>
           <input name="user-name"
             value={this.state.value}
@@ -93,6 +100,10 @@ class Admin extends Component<{}, State> {
             type="text"/>
           <button type="submit">Add</button>
         </form>
+
+        {this.state.users.length > 0 &&
+          <ul>{userList}</ul>
+        }
       </div>
     )
   }
