@@ -1,0 +1,278 @@
+2018-04-08T02:56:23.694Z - info: User function triggered, starting execution
+2018-04-08T02:56:23.700Z - info: Execution took 7 ms, user function completed successfully
+2018-04-08T02:56:23.754Z - info: Worker for helloWorld closed due to file changes.
+2018-04-08T05:14:33.748Z - info: User function triggered, starting execution
+2018-04-08T05:14:36.118Z - error: (node:2431) UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): TypeError: snapshot.numChildred is not a function
+2018-04-08T05:14:36.119Z - error: (node:2431) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+2018-04-08T05:17:06.011Z - info: User function triggered, starting execution
+2018-04-08T05:17:06.123Z - info: Reference {
+  repo: 
+   Repo {
+     repoInfo_: 
+      RepoInfo {
+        secure: true,
+        namespace: 'friday-feasts',
+        webSocketOnly: false,
+        persistenceKey: '',
+        host: 'friday-feasts.firebaseio.com',
+        domain: 'firebaseio.com',
+        internalHost: 'friday-feasts.firebaseio.com' },
+     app: 
+      FirebaseApp {
+        firebaseInternals_: [Object],
+        services_: [Object],
+        isDeleted_: false,
+        name_: '[DEFAULT]',
+        options_: [Object],
+        INTERNAL: [Object] },
+     dataUpdateCount: 0,
+     statsListener_: null,
+     eventQueue_: EventQueue { eventLists_: [], recursionDepth_: 0 },
+     nextWriteId_: 1,
+     interceptServerDataCallback_: null,
+     onDisconnect_: SparseSnapshotTree { value_: null, children_: null },
+     persistentConnection_: 
+      PersistentConnection {
+        repoInfo_: [Object],
+        onDataUpdate_: [Function: bound ],
+        onConnectStatus_: [Function: bound ],
+        onServerInfoUpdate_: [Function: bound ],
+        authTokenProvider_: [Object],
+        authOverride_: undefined,
+        id: 0,
+        log_: [Function],
+        interruptReasons_: {},
+        listens_: {},
+        outstandingPuts_: [],
+        outstandingPutCount_: 0,
+        onDisconnectRequestQueue_: [],
+        connected_: false,
+        reconnectDelay_: 1000,
+        maxReconnectDelay_: 300000,
+        securityDebugCallback_: null,
+        lastSessionId: null,
+        establishConnectionTimer_: [Object],
+        visible_: true,
+        requestCBHash_: {},
+        requestNumber_: 0,
+        realtime_: null,
+        authToken_: null,
+        forceTokenRefresh_: false,
+        invalidAuthTokenCount_: 0,
+        firstConnection_: true,
+        lastConnectionAttemptTime_: null,
+        lastConnectionEstablishedTime_: null },
+     stats_: StatsCollection { counters_: {} },
+     server_: 
+      PersistentConnection {
+        repoInfo_: [Object],
+        onDataUpdate_: [Function: bound ],
+        onConnectStatus_: [Function: bound ],
+        onServerInfoUpdate_: [Function: bound ],
+        authTokenProvider_: [Object],
+        authOverride_: undefined,
+        id: 0,
+        log_: [Function],
+        interruptReasons_: {},
+        listens_: {},
+        outstandingPuts_: [],
+        outstandingPutCount_: 0,
+        onDisconnectRequestQueue_: [],
+        connected_: false,
+        reconnectDelay_: 1000,
+        maxReconnectDelay_: 300000,
+        securityDebugCallback_: null,
+        lastSessionId: null,
+        establishConnectionTimer_: [Object],
+        visible_: true,
+        requestCBHash_: {},
+        requestNumber_: 0,
+        realtime_: null,
+        authToken_: null,
+        forceTokenRefresh_: false,
+        invalidAuthTokenCount_: 0,
+        firstConnection_: true,
+        lastConnectionAttemptTime_: null,
+        lastConnectionEstablishedTime_: null },
+     statsReporter_: 
+      StatsReporter {
+        server_: [Object],
+        statsToReport_: {},
+        statsListener_: [Object] },
+     transactionQueueTree_: Tree { name_: '', parent_: null, node_: [Object] },
+     infoData_: SnapshotHolder { rootNode_: [Object] },
+     infoSyncTree_: 
+      SyncTree {
+        listenProvider_: [Object],
+        syncPointTree_: [Object],
+        pendingWriteTree_: [Object],
+        tagToQueryMap_: {},
+        queryToTagMap_: {} },
+     serverSyncTree_: 
+      SyncTree {
+        listenProvider_: [Object],
+        syncPointTree_: [Object],
+        pendingWriteTree_: [Object],
+        tagToQueryMap_: {},
+        queryToTagMap_: {} },
+     __database: Database { repo_: [Circular], root_: [Object], INTERNAL: [Object] } },
+  path: Path { pieces_: [ 'users' ], pieceNum_: 0 },
+  queryParams_: 
+   QueryParams {
+     limitSet_: false,
+     startSet_: false,
+     startNameSet_: false,
+     endSet_: false,
+     endNameSet_: false,
+     limit_: 0,
+     viewFrom_: '',
+     indexStartValue_: null,
+     indexStartName_: '',
+     indexEndValue_: null,
+     indexEndName_: '',
+     index_: PriorityIndex {} },
+  orderByCalled_: false }
+2018-04-08T05:17:59.123Z - info: Worker for helloWorld closed due to file changes.
+2018-04-08T05:18:06.002Z - info: Execution took 60000 ms, finished with status: 'timeout'
+2018-04-08T05:24:29.992Z - info: User function triggered, starting execution
+2018-04-08T05:24:32.414Z - info: DataSnapshot {
+  node_: 
+   ChildrenNode {
+     children_: SortedMap { comparator_: [Function: NAME_COMPARATOR], root_: [Object] },
+     priorityNode_: 
+      ChildrenNode {
+        children_: [Object],
+        priorityNode_: null,
+        indexMap_: [Object],
+        lazyHash_: '' },
+     indexMap_: IndexMap { indexes_: [Object], indexSet_: [Object] },
+     lazyHash_: null },
+  ref_: 
+   Reference {
+     repo: 
+      Repo {
+        repoInfo_: [Object],
+        app: [Object],
+        dataUpdateCount: 1,
+        statsListener_: null,
+        eventQueue_: [Object],
+        nextWriteId_: 1,
+        interceptServerDataCallback_: null,
+        onDisconnect_: [Object],
+        persistentConnection_: [Object],
+        stats_: [Object],
+        server_: [Object],
+        statsReporter_: [Object],
+        transactionQueueTree_: [Object],
+        infoData_: [Object],
+        infoSyncTree_: [Object],
+        serverSyncTree_: [Object],
+        __database: [Object] },
+     path: Path { pieces_: [Array], pieceNum_: 0 },
+     queryParams_: 
+      QueryParams {
+        limitSet_: false,
+        startSet_: false,
+        startNameSet_: false,
+        endSet_: false,
+        endNameSet_: false,
+        limit_: 0,
+        viewFrom_: '',
+        indexStartValue_: null,
+        indexStartName_: '',
+        indexEndValue_: null,
+        indexEndName_: '',
+        index_: PriorityIndex {} },
+     orderByCalled_: false },
+  index_: PriorityIndex {} }
+2018-04-08T05:25:12.440Z - info: Worker for helloWorld closed due to file changes.
+2018-04-08T05:25:23.645Z - info: User function triggered, starting execution
+2018-04-08T05:25:29.979Z - info: Execution took 60403 ms, finished with status: 'timeout'
+2018-04-08T05:25:29.988Z - info: Execution took 6770 ms, finished with status: 'crash'
+2018-04-08T05:27:32.537Z - info: User function triggered, starting execution
+2018-04-08T05:27:32.727Z - info: Function crashed
+2018-04-08T05:27:32.728Z - info: ReferenceError: original is not defined
+    at exports.helloWorld.functions.https.onRequest (/Users/kevinho/Documents/GitHub/friday-feast/functions/index.js:13:61)
+    at cloudFunction (/Users/kevinho/Documents/GitHub/friday-feast/functions/node_modules/firebase-functions/lib/providers/https.js:37:41)
+    at app.use (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/supervisor/worker.js:142:11)
+    at Layer.handle [as handle_request] (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/router/index.js:317:13)
+    at /usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/router/index.js:275:10)
+    at app.use (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/supervisor/worker.js:114:7)
+    at Layer.handle [as handle_request] (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/router/layer.js:95:5)
+2018-04-08T05:27:32.734Z - info: Execution took 198 ms, user function completed successfully
+2018-04-08T05:28:19.833Z - info: Worker for helloWorld closed due to file changes.
+2018-04-08T05:28:26.882Z - info: User function triggered, starting execution
+2018-04-08T05:28:27.067Z - info: Function crashed
+2018-04-08T05:28:27.068Z - info: ReferenceError: req is not defined
+    at exports.helloWorld.functions.https.onRequest (/Users/kevinho/Documents/GitHub/friday-feast/functions/index.js:13:20)
+    at cloudFunction (/Users/kevinho/Documents/GitHub/friday-feast/functions/node_modules/firebase-functions/lib/providers/https.js:37:41)
+    at app.use (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/supervisor/worker.js:142:11)
+    at Layer.handle [as handle_request] (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/router/index.js:317:13)
+    at /usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/router/index.js:284:7
+    at Function.process_params (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/router/index.js:335:12)
+    at next (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/router/index.js:275:10)
+    at app.use (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/supervisor/worker.js:114:7)
+    at Layer.handle [as handle_request] (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/router/layer.js:95:5)
+2018-04-08T05:28:27.073Z - info: Execution took 192 ms, user function completed successfully
+2018-04-08T05:28:39.786Z - info: Worker for helloWorld closed due to file changes.
+2018-04-08T05:29:11.141Z - info: User function triggered, starting execution
+2018-04-08T05:29:13.416Z - info: Execution took 2277 ms, user function completed successfully
+2018-04-08T05:35:50.118Z - info: Worker for helloWorld closed due to file changes.
+2018-04-08T05:37:16.795Z - info: User function triggered, starting execution
+2018-04-08T05:38:16.783Z - info: Execution took 60611 ms, finished with status: 'timeout'
+2018-04-08T06:10:38.318Z - info: User function triggered, starting execution
+2018-04-08T06:11:38.302Z - info: Execution took 60006 ms, finished with status: 'timeout'
+2018-04-08T06:11:38.314Z - info: Execution took 60018 ms, finished with status: 'crash'
+2018-04-08T06:11:38.314Z - error: Something went wrong with the function!
+2018-04-08T06:11:38.314Z - error:  Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:494:11)
+    at ServerResponse.setHeader (_http_outgoing.js:501:3)
+    at ServerResponse.header (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/response.js:767:10)
+    at ServerResponse.send (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/response.js:170:12)
+    at ServerResponse.json (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/response.js:267:15)
+    at ProxyServer.Supervisor._proxy.on (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/supervisor/supervisor.js:107:14)
+    at ProxyServer.emit (/usr/local/lib/node_modules/firebase-tools/node_modules/eventemitter3/index.js:144:27)
+    at ClientRequest.proxyError (/usr/local/lib/node_modules/firebase-tools/node_modules/http-proxy/lib/http-proxy/passes/web-incoming.js:156:18)
+    at emitOne (events.js:116:13)
+    at ClientRequest.emit (events.js:211:7)
+2018-04-08T06:14:23.174Z - info: User function triggered, starting execution
+2018-04-08T06:14:25.564Z - error: (node:3668) UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): TypeError: Cannot read property 'toString' of undefined
+2018-04-08T06:14:25.564Z - error: (node:3668) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+2018-04-08T06:16:18.853Z - info: User function triggered, starting execution
+2018-04-08T06:16:21.380Z - error: (node:3694) UnhandledPromiseRejectionWarning: Unhandled promise rejection (rejection id: 1): TypeError: Cannot read property 'toString' of undefined
+2018-04-08T06:16:21.381Z - error: (node:3694) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+2018-04-08T06:17:18.830Z - info: Execution took 60007 ms, finished with status: 'timeout'
+2018-04-08T06:17:18.850Z - error: Function worker killed by signal: SIGTERM
+2018-04-08T06:20:41.555Z - info: User function triggered, starting execution
+2018-04-08T06:21:41.538Z - info: Execution took 60006 ms, finished with status: 'timeout'
+2018-04-08T06:21:41.546Z - info: Execution took 60015 ms, finished with status: 'crash'
+2018-04-08T06:21:41.546Z - error: Something went wrong with the function!
+2018-04-08T06:21:41.546Z - error:  Error: Can't set headers after they are sent.
+    at validateHeader (_http_outgoing.js:494:11)
+    at ServerResponse.setHeader (_http_outgoing.js:501:3)
+    at ServerResponse.header (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/response.js:767:10)
+    at ServerResponse.send (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/response.js:170:12)
+    at ServerResponse.json (/usr/local/lib/node_modules/firebase-tools/node_modules/express/lib/response.js:267:15)
+    at ProxyServer.Supervisor._proxy.on (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/supervisor/supervisor.js:107:14)
+    at ProxyServer.emit (/usr/local/lib/node_modules/firebase-tools/node_modules/eventemitter3/index.js:144:27)
+    at ClientRequest.proxyError (/usr/local/lib/node_modules/firebase-tools/node_modules/http-proxy/lib/http-proxy/passes/web-incoming.js:156:18)
+    at emitOne (events.js:116:13)
+    at ClientRequest.emit (events.js:211:7)
+2018-04-08T06:27:13.280Z - info: User function triggered, starting execution
+2018-04-08T06:27:15.939Z - info: Execution took 2658 ms, user function completed successfully
+2018-04-08T06:56:05.365Z - info: User function triggered, starting execution
+2018-04-08T06:56:08.167Z - info: Execution took 2802 ms, user function completed successfully
+2018-04-08T06:59:45.348Z - info: User function triggered, starting execution
+2018-04-08T06:59:48.232Z - info: Execution took 2884 ms, user function completed successfully
+2018-04-08T07:03:32.699Z - info: User function triggered, starting execution
+2018-04-08T07:03:34.949Z - info: Execution took 2252 ms, user function completed successfully
+2018-04-08T07:04:51.280Z - info: Worker for checkLength closed due to file changes.
+2018-04-08T07:04:51.286Z - info: Worker for activeIndex closed due to file changes.
+2018-04-08T07:05:02.292Z - info: User function triggered, starting execution
+2018-04-08T07:05:04.550Z - info: Execution took 2259 ms, user function completed successfully
+2018-04-08T07:06:33.101Z - info: User function triggered, starting execution
+2018-04-08T07:06:35.490Z - info: Execution took 2390 ms, user function completed successfully
