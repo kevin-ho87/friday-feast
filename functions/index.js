@@ -19,7 +19,6 @@ exports.activeIndex = functions.https.onRequest((req, res) => {
 
 
 exports.checkLength = functions.database.ref('/activeUserKey').onUpdate((change, context) => {
-
   return admin.database().ref('/usersLength').once('value', function(snap){
     const activeNumIndex = change.after.val() * 1;
     const usersLengthNum = snap.val() * 1 - 1;
@@ -33,3 +32,7 @@ exports.checkLength = functions.database.ref('/activeUserKey').onUpdate((change,
   });
 });
 
+exports.updateLength = functions.database.ref('/users').onWrite((change, context) => {
+  const usersLength = change.after.val().length;
+  return admin.database().ref('/usersLength').set(usersLength);
+});
