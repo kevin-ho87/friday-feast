@@ -112,28 +112,21 @@ class Admin extends Component<{}, State> {
 
   componentDidMount() {
     //Firebase in here
-    const itemsRef = firebase.database().ref('users')
-    const currUID = firebase.database().ref('usersCurrentUID')
-    const activeUserIndex = firebase.database().ref('activeUserKey')
+    const itemsRef = firebase.database().ref('users').once('value')
+    const currUID = firebase.database().ref('usersCurrentUID').once('value')
+    const activeUserIndex = firebase.database().ref('activeUserKey').once('value')
 
+    let promises = [itemsRef, currUID, activeUserIndex]
 
+    Promise.all(promises).then(values => {
+      const users = values[0].val()
+      const uid = values[1].val()
+      const activeUserIndex = values[2].val()
 
-    itemsRef.once('value', (snapshot) => {
       this.setState({
-        users: snapshot.val()
-      })
-    })
-
-
-    currUID.once('value', (snapshot) => {
-      this.setState({
-        uid: snapshot.val()
-      })
-    })
-
-    activeUserIndex.once('value', (snapshot) => {
-      this.setState({
-        activeUserIndex: snapshot.val()
+        users,
+        uid,
+        activeUserIndex
       })
     })
   }
