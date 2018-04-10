@@ -13,7 +13,8 @@ const SaveHolder = styled.div`
 type State = {
   value: string,
   users: Array<Object>,
-  uid: number
+  uid: number,
+  activeUserIndex: ?number
 }
 
 class Admin extends Component<{}, State> {
@@ -30,7 +31,8 @@ class Admin extends Component<{}, State> {
     this.state = {
       value: '',
       users: [],
-      uid: 0
+      uid: 0,
+      activeUserIndex: null
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -112,6 +114,9 @@ class Admin extends Component<{}, State> {
     //Firebase in here
     const itemsRef = firebase.database().ref('users')
     const currUID = firebase.database().ref('usersCurrentUID')
+    const activeUserIndex = firebase.database().ref('activeUserKey')
+
+
 
     itemsRef.once('value', (snapshot) => {
       this.setState({
@@ -119,9 +124,16 @@ class Admin extends Component<{}, State> {
       })
     })
 
+
     currUID.once('value', (snapshot) => {
       this.setState({
         uid: snapshot.val()
+      })
+    })
+
+    activeUserIndex.once('value', (snapshot) => {
+      this.setState({
+        activeUserIndex: snapshot.val()
       })
     })
   }
@@ -150,10 +162,21 @@ class Admin extends Component<{}, State> {
       )
     })
 
+    const ActiveUser = () => {
+      if (typeof this.state.activeUserIndex === 'number') {
+        return (
+          <p>The persons turn this week is {this.state.users[this.state.activeUserIndex].name}</p>
+        )
+      } else {
+        return ''
+      }
+    }
+
     return (
       <div>
         <h1>Admin page</h1>
         <p>List of users</p>
+        <ActiveUser />
 
         <form onSubmit={this.addUser}>
           <input name="user-name"
