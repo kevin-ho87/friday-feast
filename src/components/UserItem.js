@@ -6,6 +6,7 @@ const Holder = styled.div`
   background-color: #fff;
   padding: 1rem;
   border-bottom: 1px solid #eee;
+  background-color: ${props => props.isActive && 'papayawhip'};
 `
 
 const ItemText = styled.span`
@@ -29,6 +30,7 @@ type Props = {
   name: string,
   uid: number,
   index: number,
+  isActive: ?boolean,
   onRemove: (number) => void,
   userEdited: (string, number) => void,
   onMove: (?number, number) => void
@@ -106,7 +108,7 @@ class UserItem extends React.Component<Props, State> {
 
   render() {
     return (
-      <Holder>
+      <Holder isActive={this.props.isActive && true}>
         <button type="button" data-dir="-1" onClick={this.move.bind(this,-1)}>⬆️ Up</button>
         <button type="button" data-dir="1" onClick={this.move.bind(this,1)}>⬇️ Down</button>
         { this.state.isEdit ?

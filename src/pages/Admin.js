@@ -147,6 +147,7 @@ class Admin extends Component<{}, State> {
             name={user.name}
             index={index}
             uid={user.uid}
+            isActive={this.state.activeUserIndex === index && true}
             onMove={this.onMove}
             userEdited={this.handleUserEdit}
             onRemove={this.onRemove}
