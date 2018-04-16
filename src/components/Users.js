@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import UserItem from '../components/UserItem'
 import styled from 'styled-components'
 import firebase from '../fire'
@@ -181,13 +181,15 @@ class Users extends Component<{}, State> {
         </form>
 
         {this.state.users.length > 0 &&
-          <ul>{userList}</ul>
+          <Fragment>
+            <ul>{userList}</ul>
+            <SaveHolder>
+              <button type="button" onClick={this.saveData}>Save</button>
+              <button type="button">Cancel</button>
+            </SaveHolder>
+          </Fragment>
         }
 
-        <SaveHolder>
-          <button type="button" onClick={this.saveData}>Save</button>
-          <button type="button">Cancel</button>
-        </SaveHolder>
       </div>
     )
   }
