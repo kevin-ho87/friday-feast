@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react'
 import UserItem from '../components/UserItem'
 import styled from 'styled-components'
 import firebase from '../fire'
+import { isEqual } from 'lodash'
 
 const SaveHolder = styled.div`
   background-color: #fff;
@@ -14,7 +15,9 @@ type State = {
   value: string,
   users: Array<Object>,
   uid: number,
-  activeUserIndex: ?number
+  activeUserIndex: ?number,
+  snapshot: ?Object,
+  isChanged: boolean
 }
 
 class Users extends Component<{}, State> {
@@ -32,7 +35,9 @@ class Users extends Component<{}, State> {
       value: '',
       users: [],
       uid: 0,
-      activeUserIndex: null
+      activeUserIndex: null,
+      snapshot: null,
+      isChanged: false
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -123,12 +128,34 @@ class Users extends Component<{}, State> {
       const uid = values[1].val()
       const activeUserIndex = values[2].val()
 
-      this.setState({
+      const snapshot = {
         users,
         uid,
         activeUserIndex
+      }
+
+      this.setState({
+        ...snapshot,
+        snapshot
       })
     })
+  }
+
+  componentDidUpdate(prevProps: Object, prevState: Object) {
+    const currState = {
+      users: [...this.state.users],
+      uid: this.state.uid,
+      activeUserIndex: this.state.activeUserIndex
+    }
+
+    // Compare original state with current
+    const didChanged = !isEqual(this.state.snapshot, currState)
+
+    if (prevState.isChanged !== didChanged) {
+      this.setState({
+        isChanged: didChanged
+      })
+    }
   }
 
   saveData() {
@@ -184,8 +211,12 @@ class Users extends Component<{}, State> {
           <Fragment>
             <ul>{userList}</ul>
             <SaveHolder>
-              <button type="button" onClick={this.saveData}>Save</button>
-              <button type="button">Cancel</button>
+              <button type="button"
+                disabled={!this.state.isChanged}
+                onClick={this.saveData}>Save</button>
+              <button type="button"
+                disabled={!this.state.isChanged}
+              >Cancel</button>
             </SaveHolder>
           </Fragment>
         }
