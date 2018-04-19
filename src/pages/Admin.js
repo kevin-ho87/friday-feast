@@ -34,16 +34,8 @@ class Admin extends Component<{}, State> {
 
   componentDidMount() {
     auth.onAuthStateChanged(user => {
-      if (user) {
-        this.setState({
-          signedIn: true
-        })
-      } else {
-        this.setState({
-          signedIn: false
-        })
-      }
       this.setState({
+        signedIn: !!user,
         isChecking: false
       })
     })
