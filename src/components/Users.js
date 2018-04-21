@@ -16,8 +16,8 @@ type State = {
   users: Array<Object>,
   uid: number,
   activeUserIndex: ?number,
-  snapshot: ?Object,
-  isChanged: boolean
+  isChanged: boolean,
+  snapshot: Object
 }
 
 class Users extends Component<{}, State> {
@@ -36,8 +36,12 @@ class Users extends Component<{}, State> {
       users: [],
       uid: 0,
       activeUserIndex: null,
-      snapshot: null,
-      isChanged: false
+      isChanged: false,
+      snapshot: {
+        users: [],
+        uid: null,
+        activeUserIndex: null
+      }
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -117,26 +121,33 @@ class Users extends Component<{}, State> {
 
   componentDidMount() {
     //Firebase in here
-    const itemsRef = firebase.database().ref('users').once('value')
-    const currUID = firebase.database().ref('usersCurrentUID').once('value')
-    const activeUserIndex = firebase.database().ref('activeUserKey').once('value')
-
-    let promises = [itemsRef, currUID, activeUserIndex]
-
-    Promise.all(promises).then(values => {
-      const users = values[0].val()
-      const uid = values[1].val()
-      const activeUserIndex = values[2].val()
-
-      const snapshot = {
-        users,
-        uid,
-        activeUserIndex
-      }
-
+    firebase.database().ref('users').on('value', snapshot => {
       this.setState({
-        ...snapshot,
-        snapshot
+        users: [...snapshot.val()],
+        snapshot: {
+          ...this.state.snapshot,
+          users: [...snapshot.val()]
+        }
+      })
+    })
+
+    firebase.database().ref('usersCurrentUID').on('value', snapshot => {
+      this.setState({
+        uid: snapshot.val(),
+        snapshot: {
+          ...this.state.snapshot,
+          uid: snapshot.val()
+        }
+      })
+    })
+
+    firebase.database().ref('activeUserKey').on('value', snapshot => {
+      this.setState({
+        activeUserIndex: snapshot.val(),
+        snapshot: {
+          ...this.state.snapshot,
+          activeUserIndex: snapshot.val()
+        }
       })
     })
   }
