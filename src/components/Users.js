@@ -121,33 +121,21 @@ class Users extends Component<{}, State> {
 
   componentDidMount() {
     //Firebase in here
-    firebase.database().ref('users').on('value', snapshot => {
-      this.setState({
-        users: [...snapshot.val()],
-        snapshot: {
-          ...this.state.snapshot,
-          users: [...snapshot.val()]
-        }
-      })
-    })
+    const arrFire = ['users', 'usersCurrentUID', 'activeUserKey']
+    const arrState = ['users', 'uid', 'activeUserIndex']
 
-    firebase.database().ref('usersCurrentUID').on('value', snapshot => {
-      this.setState({
-        uid: snapshot.val(),
-        snapshot: {
-          ...this.state.snapshot,
-          uid: snapshot.val()
-        }
-      })
-    })
+    arrFire.forEach((item, index) => {
+      firebase.database().ref(item).on('value', snapshot => {
+        let newState = {}
+        newState[arrState[index]] = snapshot.val()
 
-    firebase.database().ref('activeUserKey').on('value', snapshot => {
-      this.setState({
-        activeUserIndex: snapshot.val(),
-        snapshot: {
-          ...this.state.snapshot,
-          activeUserIndex: snapshot.val()
-        }
+        this.setState({
+          ...newState,
+          snapshot: {
+            ...this.state.snapshot,
+            ...newState
+          }
+        })
       })
     })
   }
