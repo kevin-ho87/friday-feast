@@ -140,6 +140,12 @@ class Users extends Component<{}, State> {
     })
   }
 
+  componentWillUnmount() {
+    firebase.database().ref('users').off()
+    firebase.database().ref('usersCurrentUID').off()
+    firebase.database().ref('activeUserKey').off()
+  }
+
   componentDidUpdate(prevProps: Object, prevState: Object) {
     const currState = {
       users: [...this.state.users],

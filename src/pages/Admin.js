@@ -16,6 +16,7 @@ type State = {
 class Admin extends Component<{}, State> {
   handleChange: () => void
   signIn: () => void
+  removeAuthListener: () => void
 
   constructor() {
     super()
@@ -33,12 +34,16 @@ class Admin extends Component<{}, State> {
   }
 
   componentDidMount() {
-    auth.onAuthStateChanged(user => {
+    this.removeAuthListener = auth.onAuthStateChanged(user => {
       this.setState({
         signedIn: !!user,
         isChecking: false
       })
     })
+  }
+
+  componentWillUnmount() {
+    this.removeAuthListener()
   }
 
   handleChange(event: SyntheticEvent<HTMLInputElement>) {
