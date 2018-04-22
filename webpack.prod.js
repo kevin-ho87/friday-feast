@@ -2,6 +2,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(common, {
   mode: 'production',
@@ -9,6 +10,7 @@ module.exports = merge(common, {
   plugins: [
     new ExtractTextPlugin('style.css'),
     new LodashModuleReplacementPlugin
+    // new BundleAnalyzerPlugin()
   ],
   module: {
     rules: [
