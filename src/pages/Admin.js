@@ -81,8 +81,33 @@ class Admin extends Component<{}, State> {
       })
   }
 
-  render() {
+  markupIsSignedIn() {
+    return (
+      <Fragment>
+        <button type="button" onClick={() => auth.signOut()}>Sign out</button>
+        <Users />
+      </Fragment>
+    )
+  }
 
+  markupNotSignedIn = () => {
+    return (
+      <form onSubmit={this.signIn}>
+        <div>
+          <label htmlFor="">Username</label>
+          <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+        </div>
+        <div>
+          <label htmlFor="">Password</label>
+          <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+        </div>
+        <button type="submit" disabled={this.state.isSigningIn && true}>Sign in</button>
+        {this.state.isSigningIn && <p>Signing in.......</p>}
+      </form>
+    )
+  }
+
+  render() {
     if (this.state.isChecking) {
       return (
         <p>Authenticating.....</p>
@@ -91,24 +116,10 @@ class Admin extends Component<{}, State> {
 
     return (
       <div>
-        { this.state.signedIn ?
-          <Fragment>
-            <button type="button" onClick={() => auth.signOut()}>Sign out</button>
-            <Users />
-          </Fragment>
-        :
-          <form onSubmit={this.signIn}>
-            <div>
-              <label htmlFor="">Username</label>
-              <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-            </div>
-            <div>
-              <label htmlFor="">Password</label>
-              <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-            </div>
-            <button type="submit" disabled={this.state.isSigningIn && true}>Sign in</button>
-            {this.state.isSigningIn && <p>Signing in.......</p>}
-          </form>
+        {
+          this.state.signedIn
+          ? this.markupIsSignedIn()
+          : this.markupNotSignedIn()
         }
       </div>
     )
