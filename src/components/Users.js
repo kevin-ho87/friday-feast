@@ -27,6 +27,7 @@ class Users extends Component<{}, State> {
   handleUserEdit: () => void
   onMove: () => void
   saveData: () => void
+  resetData: () => void
 
   constructor() {
     super()
@@ -50,6 +51,7 @@ class Users extends Component<{}, State> {
     this.handleUserEdit = this.handleUserEdit.bind(this)
     this.onMove = this.onMove.bind(this)
     this.saveData = this.saveData.bind(this)
+    this.resetData = this.resetData.bind(this)
   }
 
   handleChange(event: SyntheticInputEvent<HTMLInputElement>) {
@@ -171,6 +173,21 @@ class Users extends Component<{}, State> {
     currUID.set(this.state.uid)
   }
 
+  resetData() {
+    // Revert back to saved state from firebase
+    if (!window.confirm('Are you sure you want to cancel your changes?')) {
+      return
+    }
+
+    const { users, uid, activeUserIndex } = this.state.snapshot
+
+    this.setState({
+      users: [...users],
+      uid,
+      activeUserIndex
+    })
+  }
+
   render() {
     const userList = this.state.users.map((user, index) => {
       return (
@@ -218,9 +235,11 @@ class Users extends Component<{}, State> {
             <SaveHolder>
               <button type="button"
                 disabled={!this.state.isChanged}
-                onClick={this.saveData}>Save</button>
+                onClick={this.saveData}
+              >Save</button>
               <button type="button"
                 disabled={!this.state.isChanged}
+                onClick={this.resetData}
               >Cancel</button>
             </SaveHolder>
           </Fragment>
