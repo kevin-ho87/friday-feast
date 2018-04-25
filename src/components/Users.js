@@ -28,6 +28,7 @@ class Users extends Component<{}, State> {
   onMove: () => void
   saveData: () => void
   resetData: () => void
+  setActiveUser: () => void
 
   constructor() {
     super()
@@ -52,6 +53,7 @@ class Users extends Component<{}, State> {
     this.onMove = this.onMove.bind(this)
     this.saveData = this.saveData.bind(this)
     this.resetData = this.resetData.bind(this)
+    this.setActiveUser = this.setActiveUser.bind(this)
   }
 
   handleChange(event: SyntheticInputEvent<HTMLInputElement>) {
@@ -78,10 +80,26 @@ class Users extends Component<{}, State> {
     }
   }
 
+  checkActiveUserSet = () => {
+    // on delete, set active user to last item in user array if current active user is already the last item
+    const usersLength = this.state.users.length
+    const { activeUserIndex } = this.state
+
+    this.setState(prevState => {
+      if ((typeof usersLength === 'number') && (typeof prevState.activeUserIndex === 'number') && (usersLength <= prevState.activeUserIndex)) {
+        return ({
+          activeUserIndex: prevState.activeUserIndex -1
+        })
+      }
+    })
+  }
+
   onRemove(id: number) {
     this.setState(prevState => ({
       users: prevState.users.filter(item => item.uid !== id)
-    }))
+    }), () => {
+      this.checkActiveUserSet()
+    })
   }
 
   handleUserEdit(newText: string, id: number) {
@@ -131,13 +149,13 @@ class Users extends Component<{}, State> {
         let newState = {}
         newState[arrState[index]] = snapshot.val()
 
-        this.setState({
+        this.setState((prevState, props) => ({
           ...newState,
           snapshot: {
-            ...this.state.snapshot,
+            ...prevState.snapshot,
             ...newState
           }
-        })
+        }))
       })
     })
   }
@@ -169,8 +187,11 @@ class Users extends Component<{}, State> {
     //Firebase in here
     const itemsRef = firebase.database().ref('users')
     const currUID = firebase.database().ref('usersCurrentUID')
+    const activeUserKey = firebase.database().ref('activeUserKey')
+
     itemsRef.set(this.state.users)
     currUID.set(this.state.uid)
+    activeUserKey.set(this.state.activeUserIndex)
   }
 
   resetData() {
@@ -188,6 +209,12 @@ class Users extends Component<{}, State> {
     })
   }
 
+  setActiveUser(index: number) {
+    this.setState({
+      activeUserIndex: index
+    })
+  }
+
   render() {
     const userList = this.state.users.map((user, index) => {
       return (
@@ -200,26 +227,16 @@ class Users extends Component<{}, State> {
             onMove={this.onMove}
             userEdited={this.handleUserEdit}
             onRemove={this.onRemove}
+            onActiveUser={this.setActiveUser}
           />
         </li>
       )
     })
 
-    const ActiveUser = () => {
-      if (typeof this.state.activeUserIndex === 'number') {
-        return (
-          <p>The persons turn this week is {this.state.users[this.state.activeUserIndex].name}</p>
-        )
-      } else {
-        return ''
-      }
-    }
-
     return (
       <div>
         <h1>Users page</h1>
         <p>List of users</p>
-        <ActiveUser />
 
         <form onSubmit={this.addUser}>
           <input name="user-name"

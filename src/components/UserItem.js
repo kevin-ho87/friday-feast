@@ -3,10 +3,9 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 const Holder = styled.div`
-  background-color: #fff;
   padding: 1rem;
   border-bottom: 1px solid #eee;
-  background-color: ${props => props.isActive && 'papayawhip'};
+  background-color: ${props => props.isActive ? 'papayawhip' : '#fff' };
 `
 
 const ItemText = styled.span`
@@ -33,7 +32,8 @@ type Props = {
   isActive: ?boolean,
   onRemove: (number) => void,
   userEdited: (string, number) => void,
-  onMove: (?number, number) => void
+  onMove: (?number, number) => void,
+  onActiveUser: (number) => void
 }
 
 type State = {
@@ -49,6 +49,7 @@ class UserItem extends React.Component<Props, State> {
   handleSet: () => void
   onNameChange: () => void
   move: (number) => void
+  setActive: () => void
 
   constructor(props: Props) {
     super(props)
@@ -63,7 +64,7 @@ class UserItem extends React.Component<Props, State> {
     this.cancelEdit = this.cancelEdit.bind(this)
     this.handleSet = this.handleSet.bind(this)
     this.onNameChange = this.onNameChange.bind(this)
-    // this.move = this.move.bind(this)
+    this.setActive = this.setActive.bind(this)
   }
 
   removeHandler() {
@@ -106,6 +107,21 @@ class UserItem extends React.Component<Props, State> {
     this.props.onMove(dir, this.props.index)
   }
 
+  setActive() {
+    this.props.onActiveUser(this.props.index)
+  }
+
+  markupButtonsHolder = () => {
+    return (
+      <div>
+        <ItemText>{this.props.name}</ItemText>
+        <Button type="button" onClick={this.triggerEdit}>Edit</Button>
+        <Button type="button" onClick={this.removeHandler}>Delete</Button>
+        <Button type="button" onClick={this.setActive}>Set as active</Button>
+      </div>
+    )
+  }
+
   render() {
     return (
       <Holder isActive={this.props.isActive && true}>
@@ -125,14 +141,7 @@ class UserItem extends React.Component<Props, State> {
               <Button type="button" onClick={this.cancelEdit}>Cancel</Button>
             </div>
           )
-          :
-          (
-            <div>
-              <ItemText>{ this.props.name }</ItemText>
-              <Button type="button" onClick={this.triggerEdit}>Edit</Button>
-              <Button type="button" onClick={this.removeHandler}>Delete</Button>
-            </div>
-          )
+          : this.markupButtonsHolder()
         }
       </Holder>
     )
