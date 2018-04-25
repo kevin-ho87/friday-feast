@@ -86,7 +86,7 @@ class Users extends Component<{}, State> {
     const { activeUserIndex } = this.state
 
     this.setState(prevState => {
-      if ((typeof usersLength === 'number') && (typeof prevState.activeUserIndex === 'number') && (usersLength <= prevState.activeUserIndex)) {
+      if ((typeof prevState.activeUserIndex === 'number') && (usersLength <= prevState.activeUserIndex)) {
         return ({
           activeUserIndex: prevState.activeUserIndex -1
         })
@@ -233,10 +233,24 @@ class Users extends Component<{}, State> {
       )
     })
 
+    const ActiveUser = () => {
+      if (typeof this.state.activeUserIndex === 'number' && this.state.users.length > this.state.activeUserIndex) {
+        return (
+          <p>The persons turn this week is {this.state.users[this.state.activeUserIndex].name}</p>
+        )
+      } else {
+        return ''
+      }
+    }
+
     return (
       <div>
         <h1>Users page</h1>
         <p>List of users</p>
+
+        <hr/>
+        <ActiveUser />
+        <hr/>
 
         <form onSubmit={this.addUser}>
           <input name="user-name"
