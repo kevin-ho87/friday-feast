@@ -23,6 +23,7 @@ const Button = styled.button`
   background-color: #FF5A5F;
   border: 0;
   border-radius: 3px;
+  opacity: ${props => props.disabled ? .5 : 1};
 `
 
 type Props = {
@@ -133,7 +134,7 @@ class UserItem extends React.Component<Props, State> {
         <ItemText>{this.props.name}</ItemText>
         <Button type="button" onClick={this.triggerEdit}>Edit</Button>
         <Button type="button" onClick={this.removeHandler}>Delete</Button>
-        <Button type="button" onClick={this.setActive}>Set as active</Button>
+        <Button type="button" disabled={this.props.isActive ? true : false} onClick={this.setActive}>Set as active</Button>
       </div>
     )
   }
