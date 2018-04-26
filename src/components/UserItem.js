@@ -69,8 +69,9 @@ class UserItem extends React.Component<Props, State> {
   }
 
   removeHandler() {
-    const { uid } = this.props
-    this.props.onRemove(uid)
+    if (window.confirm('Are you sure you want to delete this user?')) {
+      this.props.onRemove(this.props.uid)
+    }
   }
 
   triggerEdit() {
