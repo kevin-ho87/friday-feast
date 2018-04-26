@@ -111,6 +111,22 @@ class UserItem extends React.Component<Props, State> {
     this.props.onActiveUser(this.props.index)
   }
 
+  markupUserHolder = () => {
+    return (
+      <React.Fragment>
+        <form onSubmit={this.handleSet}>
+          <input
+            ref={input => { this.myInput = input }}
+            value={this.state.name}
+            onChange={this.onNameChange}
+            type="text" />
+          <Button type="submit">Set</Button>
+        </form>
+        <Button type="button" onClick={this.cancelEdit}>Cancel</Button>
+      </React.Fragment>
+    )
+  }
+
   markupButtonsHolder = () => {
     return (
       <div>
@@ -127,22 +143,7 @@ class UserItem extends React.Component<Props, State> {
       <Holder isActive={this.props.isActive && true}>
         <button type="button" data-dir="-1" onClick={this.move.bind(this,-1)}>⬆️ Up</button>
         <button type="button" data-dir="1" onClick={this.move.bind(this,1)}>⬇️ Down</button>
-        { this.state.isEdit ?
-          (
-            <div>
-              <form onSubmit={this.handleSet}>
-                <input
-                  ref={input => {this.myInput = input}}
-                  value={this.state.name}
-                  onChange={this.onNameChange}
-                  type="text"/>
-                <Button type="submit">Set</Button>
-              </form>
-              <Button type="button" onClick={this.cancelEdit}>Cancel</Button>
-            </div>
-          )
-          : this.markupButtonsHolder()
-        }
+        { this.state.isEdit ? this.markupUserHolder() : this.markupButtonsHolder() }
       </Holder>
     )
   }
