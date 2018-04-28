@@ -265,7 +265,6 @@ class Users extends Component<{}, State> {
           <Fragment>
             <ul>{userList}</ul>
             <SaveHolder>
-              <button type="button"
               <Button type="button"
                 disabled={!this.state.isChanged}
                 onClick={this.saveData}
