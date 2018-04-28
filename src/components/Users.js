@@ -4,6 +4,7 @@ import UserItem from '../components/UserItem'
 import styled from 'styled-components'
 import firebase from '../fire'
 import { isEqual } from 'lodash'
+import { Button, AltButton } from '../style/Button'
 
 const SaveHolder = styled.div`
   background-color: #fff;
@@ -265,13 +266,14 @@ class Users extends Component<{}, State> {
             <ul>{userList}</ul>
             <SaveHolder>
               <button type="button"
+              <Button type="button"
                 disabled={!this.state.isChanged}
                 onClick={this.saveData}
-              >Save</button>
-              <button type="button"
+              >Save</Button>
+              <AltButton type="button"
                 disabled={!this.state.isChanged}
                 onClick={this.resetData}
-              >Cancel</button>
+              >Cancel</AltButton>
             </SaveHolder>
           </Fragment>
         }

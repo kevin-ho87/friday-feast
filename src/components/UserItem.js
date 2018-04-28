@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react'
 import styled from 'styled-components'
+import { Button, AltButton } from '../style/Button'
 
 const Holder = styled.div`
   padding: 1rem;
@@ -12,18 +13,6 @@ const ItemText = styled.span`
   display: inline-block;
   padding: 1rem;
   margin-right: 1rem;
-`
-
-const Button = styled.button`
-  display: inline-block;
-  font-size: 1rem;
-  color: #fff;
-  padding: 1rem;
-  margin: .2rem;
-  background-color: #FF5A5F;
-  border: 0;
-  border-radius: 3px;
-  opacity: ${props => props.disabled ? .5 : 1};
 `
 
 type Props = {
@@ -135,7 +124,7 @@ class UserItem extends React.Component<Props, State> {
         <ItemText>{this.props.name}</ItemText>
         <Button type="button" onClick={this.triggerEdit}>Edit</Button>
         <Button type="button" onClick={this.removeHandler}>Delete</Button>
-        <Button type="button" disabled={this.props.isActive ? true : false} onClick={this.setActive}>Set as active</Button>
+        <AltButton type="button" disabled={this.props.isActive ? true : false} onClick={this.setActive}>Set as active</AltButton>
       </div>
     )
   }

@@ -2,6 +2,7 @@
 import React, { Component, Fragment } from 'react'
 import AsyncLoader from '../components/AsyncLoader'
 import { auth } from '../fire'
+import { Button } from '../style/Button'
 
 const Users = AsyncLoader(() => import('../components/Users'))
 
@@ -101,7 +102,7 @@ class Admin extends Component<{}, State> {
           <label htmlFor="">Password</label>
           <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
         </div>
-        <button type="submit" disabled={this.state.isSigningIn && true}>Sign in</button>
+        <Button type="submit" disabled={this.state.isSigningIn && true}>Sign in</Button>
         {this.state.isSigningIn && <p>Signing in.......</p>}
       </form>
     )
