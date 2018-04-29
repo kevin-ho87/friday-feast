@@ -10,12 +10,12 @@ const DayOfWeek = ({ dayIndex }: Props) => {
   const theDay: Date = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + dayIndex)
 
   return (
-    <p>{`
+    <React.Fragment>{`
       ${theDay.toLocaleString('en-GB', { weekday: "long" })}
       ${theDay.getDate()}
       ${theDay.toLocaleString('en-GB', { month: "long" })}
       ${theDay.getFullYear()}
-    `}</p>
+    `}</React.Fragment>
   )
 }
 

@@ -6,9 +6,14 @@ import firebase from '../fire'
 
 const Holder = styled.div`
   background-color: #fff;
-  width: 400px;
   padding: 1rem;
-  border-left: 4px solid #444;
+  width: 300px;
+`
+
+const LoadingBox = styled.div`
+  height: 2rem;
+  width: 100px;
+  background-color: #eee;
 `
 
 type State = {
@@ -46,16 +51,17 @@ class Home extends Component<{}, State> {
 
   render() {
     return (
-      <Holder>
-        { !this.state.isLoaded ?
-          <p>Rendering...</p>
-        :
-          <Fragment>
-            <h1>Hi {this.state.activeUserName}! It is your turn this week!</h1>
-            <DayOfWeek dayIndex={5} />
-          </Fragment>
-        }
-      </Holder>
+      <Fragment>
+        <h1>Friday Feast!</h1>
+        <Holder>
+          <p>This week: <DayOfWeek dayIndex={5} /></p>
+          {!this.state.isLoaded ?
+            <LoadingBox></LoadingBox>
+            :
+            <p>{this.state.activeUserName}</p>
+          }
+        </Holder>
+      </Fragment>
     )
   }
 }
