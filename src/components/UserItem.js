@@ -57,6 +57,17 @@ class UserItem extends React.Component<Props, State> {
     this.setActive = this.setActive.bind(this)
   }
 
+  static getDerivedStateFromProps(nextProps: Object, prevState: Object) {
+    // When new props come in, update input field value that is not saved
+    if (nextProps.name !== prevState.name) {
+      return {
+        name: nextProps.name
+      }
+    }
+
+    return null
+  }
+
   removeHandler() {
     if (window.confirm('Are you sure you want to delete this user?')) {
       this.props.onRemove(this.props.uid)
