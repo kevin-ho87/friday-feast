@@ -10,7 +10,7 @@ const Users = AsyncLoader(() => import('../components/Users'))
 
 const Page = styled.div`
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   margin: 2rem auto;
 `
 
