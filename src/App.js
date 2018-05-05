@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Route, Link } from 'react-router-dom'
 import AsyncLoader from './components/AsyncLoader'
 import styled from 'styled-components'
@@ -8,9 +8,10 @@ const Home = AsyncLoader(() => import('./pages/Home'))
 const Admin = AsyncLoader(() => import('./pages/Admin'))
 
 const Header = styled.header`
+  position: relative;
+  z-index: 2;
   background-color: #fff;
   padding: 1rem;
-  margin-bottom: 1rem;
   box-shadow: 0 0 4px rgba(0,0,0,.3);
 `
 
@@ -30,7 +31,7 @@ const Icon = styled.span`
 class App extends Component<void> {
   render() {
     return (
-      <div>
+      <Fragment>
         <Header>
           <StyledLink to="/"><Icon>🍜</Icon> Friday Feast!</StyledLink>
           {/* <nav>
@@ -44,7 +45,7 @@ class App extends Component<void> {
           <Route exact path="/" component={Home} />
           <Route path="/admin" component={Admin} />
         </main>
-      </div>
+      </Fragment>
     )
   }
 }
