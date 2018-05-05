@@ -52,7 +52,6 @@ class Home extends Component<{}, State> {
   render() {
     return (
       <Fragment>
-        <h1>Friday Feast!</h1>
         <Holder>
           <p>This week: <DayOfWeek dayIndex={5} /></p>
           {!this.state.isLoaded ?
