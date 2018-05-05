@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import AsyncLoader from '../components/AsyncLoader'
 import { auth } from '../fire'
 import { Button } from '../style/Button'
@@ -7,6 +7,21 @@ import { Card } from '../style/Card'
 import styled from 'styled-components'
 
 const Users = AsyncLoader(() => import('../components/Users'))
+
+const Page = styled.div`
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+`
+
+const Welcome = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 100px;
+
+  h1 {
+    margin-top: 0.5rem;
+  }
+`
 
 const Label = styled.label`
   display: block;
@@ -98,10 +113,16 @@ class Admin extends Component<{}, State> {
 
   markupIsSignedIn() {
     return (
-      <Fragment>
-        <button type="button" onClick={() => auth.signOut()}>Sign out</button>
+      <Page>
+        <Welcome>
+          <h1>Welcome back!</h1>
+          <div>
+            <Button type="button" onClick={() => auth.signOut()}>Sign out</Button>
+          </div>
+        </Welcome>
+
         <Users />
-      </Fragment>
+      </Page>
     )
   }
 

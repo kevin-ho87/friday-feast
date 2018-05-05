@@ -5,11 +5,19 @@ import styled from 'styled-components'
 import firebase from '../fire'
 import { isEqual } from 'lodash'
 import { Button, AltButton } from '../style/Button'
+import { Card } from '../style/Card'
 
 const SaveHolder = styled.div`
   background-color: #fff;
   padding: 1rem;
   margin-top: 1rem;
+`
+
+const AddHolder = styled.form`
+  display: flex;
+  input {
+    flex: 1 1 auto;
+  }
 `
 
 type State = {
@@ -246,20 +254,19 @@ class Users extends Component<{}, State> {
 
     return (
       <div>
-        <h1>Users page</h1>
-        <p>List of users</p>
 
-        <hr/>
+        {/* <hr/>
         <ActiveUser />
-        <hr/>
-
-        <form onSubmit={this.addUser}>
-          <input name="user-name"
-            value={this.state.value}
-            onChange={this.handleChange}
-            type="text" />
-          <button type="submit">Add</button>
-        </form>
+        <hr/> */}
+        <Card>
+          <AddHolder onSubmit={this.addUser}>
+            <input name="user-name"
+              value={this.state.value}
+              onChange={this.handleChange}
+              type="text" />
+            <Button type="submit">Add person</Button>
+          </AddHolder>
+        </Card>
 
         {this.state.users.length > 0 &&
           <Fragment>
