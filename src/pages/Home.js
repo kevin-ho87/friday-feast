@@ -1,17 +1,9 @@
 // @flow
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
+import { Card } from '../style/Card'
 import DayOfWeek from '../components/DayOfWeek'
 import firebase from '../fire'
-
-const Holder = styled.div`
-  background-color: #fff;
-  padding: 1rem;
-  max-width: 450px;
-  margin: 1rem auto;
-  box-shadow: 0 0 4px rgba(0,0,0,.3);
-  border-radius: 3px;
-`
 
 const DateText = styled.p`
   margin-top: 0;
@@ -82,7 +74,7 @@ class Home extends Component<{}, State> {
   render() {
     return (
       <Fragment>
-        <Holder>
+        <Card>
           <DateText>🗓 This week: <DayOfWeek dayIndex={5} /></DateText>
           <ContentHolder>
             <div>
@@ -95,7 +87,7 @@ class Home extends Component<{}, State> {
             </div>
             <Icon role="presentation">🍔</Icon>
           </ContentHolder>
-        </Holder>
+        </Card>
       </Fragment>
     )
   }
