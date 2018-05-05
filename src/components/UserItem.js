@@ -4,15 +4,10 @@ import styled from 'styled-components'
 import { Button, AltButton } from '../style/Button'
 
 const Holder = styled.div`
+  display: flex;
   padding: 1rem;
   border-bottom: 1px solid #eee;
   background-color: ${props => props.isActive ? 'papayawhip' : '#fff' };
-`
-
-const ItemText = styled.span`
-  display: inline-block;
-  padding: 1rem;
-  margin-right: 1rem;
 `
 
 type Props = {
@@ -114,37 +109,73 @@ class UserItem extends React.Component<Props, State> {
   }
 
   markupUserHolder = () => {
+    const EditForm = styled.form`
+      flex: 1 1 auto;
+      display: flex;
+
+      input {
+        flex: 1 1 auto;
+      }
+    `
+
     return (
-      <React.Fragment>
-        <form onSubmit={this.handleSet}>
-          <input
-            ref={input => { this.myInput = input }}
-            value={this.state.name}
-            onChange={this.onNameChange}
-            type="text" />
-          <Button type="submit">Set</Button>
-        </form>
-        <Button type="button" onClick={this.cancelEdit}>Cancel</Button>
-      </React.Fragment>
+      <EditForm onSubmit={this.handleSet}>
+        <input
+          ref={input => { this.myInput = input }}
+          value={this.state.name}
+          onChange={this.onNameChange}
+          type="text" />
+        <Button type="submit">Set</Button>
+        <AltButton type="button" onClick={this.cancelEdit}>Cancel</AltButton>
+      </EditForm>
     )
   }
 
   markupButtonsHolder = () => {
+    const GG = styled.div`
+      flex: 1 1 auto;
+      display: flex;
+    `
+
+    const ItemText = styled.span`
+      flex: 1 1 auto;
+      display: inline-block;
+      padding: 1rem;
+      margin-right: 1rem;
+    `
+
     return (
-      <div>
+      <GG>
         <ItemText>{this.props.name}</ItemText>
         <Button type="button" onClick={this.triggerEdit}>Edit</Button>
         <Button type="button" onClick={this.removeHandler}>Delete</Button>
         <AltButton type="button" disabled={this.props.isActive ? true : false} onClick={this.setActive}>Set as active</AltButton>
-      </div>
+      </GG>
+    )
+  }
+
+  markupDirectionButtonsHolder = () => {
+    const DirectionButtons = styled.div`
+      display: grid;
+      grid-row-gap: .2rem;
+    `
+
+    const ArrowButton = AltButton.extend`
+      padding: 0 0.3rem;
+    `
+
+    return (
+      <DirectionButtons>
+        <ArrowButton type="button" title="Up" data-dir="-1" onClick={this.move.bind(this, -1)}>↑</ArrowButton>
+        <ArrowButton type="button" title="Down" data-dir="1" onClick={this.move.bind(this, 1)}>↓</ArrowButton>
+      </DirectionButtons>
     )
   }
 
   render() {
     return (
       <Holder isActive={this.props.isActive && true}>
-        <button type="button" data-dir="-1" onClick={this.move.bind(this,-1)}>⬆️ Up</button>
-        <button type="button" data-dir="1" onClick={this.move.bind(this,1)}>⬇️ Down</button>
+        { this.markupDirectionButtonsHolder() }
         { this.state.isEdit ? this.markupUserHolder() : this.markupButtonsHolder() }
       </Holder>
     )
