@@ -3,8 +3,31 @@ import React, { Component, Fragment } from 'react'
 import AsyncLoader from '../components/AsyncLoader'
 import { auth } from '../fire'
 import { Button } from '../style/Button'
+import styled from 'styled-components'
 
 const Users = AsyncLoader(() => import('../components/Users'))
+
+const Label = styled.label`
+  display: block;
+  margin-bottom: .2rem;
+`
+
+const FormRow = styled.div`
+  margin-bottom: 1rem;
+`
+
+const Holder = styled.form`
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0 0 4px rgba(0,0,0,.3);
+  border-radius: 3px;
+  max-width: 400px;
+  margin: 2rem auto;
+`
+
+const Input = styled.input`
+  width: 100%;
+`
 
 type State = {
   username: string,
@@ -55,7 +78,6 @@ class Admin extends Component<{}, State> {
 
   signIn(event: SyntheticEvent<>) {
     event.preventDefault()
-    console.log('signing in in')
 
     this.setState({
       isSigningIn: true
@@ -93,18 +115,18 @@ class Admin extends Component<{}, State> {
 
   markupNotSignedIn = () => {
     return (
-      <form onSubmit={this.signIn}>
-        <div>
-          <label htmlFor="">Username</label>
-          <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-        </div>
-        <div>
-          <label htmlFor="">Password</label>
-          <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-        </div>
+      <Holder onSubmit={this.signIn}>
+        <FormRow>
+          <Label>Username</Label>
+          <Input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+        </FormRow>
+        <FormRow>
+          <Label>Password</Label>
+          <Input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+        </FormRow>
         <Button type="submit" disabled={this.state.isSigningIn && true}>Sign in</Button>
-        {this.state.isSigningIn && <p>Signing in.......</p>}
-      </form>
+        {this.state.isSigningIn && <p>Signing in...</p>}
+      </Holder>
     )
   }
 
