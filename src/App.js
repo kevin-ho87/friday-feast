@@ -20,11 +20,11 @@ const StyledLink = styled(Link)`
   color: #000;
   font-weight: bold;
   text-decoration: none;
+`
 
-  span {
-    font-size: 1.5rem;
-    margin-right: .5rem;
-  }
+const Icon = styled.span`
+  font-size: 1.5rem;
+  margin-right: .5rem;
 `
 
 class App extends Component<void> {
@@ -32,7 +32,7 @@ class App extends Component<void> {
     return (
       <div>
         <Header>
-          <StyledLink to="/"><span>🍜</span> Friday Feast!</StyledLink>
+          <StyledLink to="/"><Icon>🍜</Icon> Friday Feast!</StyledLink>
           {/* <nav>
             <ul>
               <li><Link to="/">Home</Link></li>
