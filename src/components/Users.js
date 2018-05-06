@@ -11,12 +11,17 @@ const SaveHolder = styled.div`
   background-color: #fff;
   padding: 1rem;
   margin-top: 1rem;
+
+  button {
+    margin-right: .2rem;
+  }
 `
 
 const AddHolder = styled.form`
   display: flex;
   input {
     flex: 1 1 auto;
+    margin-right: .2rem;
   }
 `
 
