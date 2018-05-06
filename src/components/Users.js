@@ -230,6 +230,35 @@ class Users extends Component<{}, State> {
     })
   }
 
+  markupSaveHolder = () => {
+    return (
+      <SaveHolder>
+        <Button type="button"
+          disabled={!this.state.isChanged}
+          onClick={this.saveData}
+          >Save</Button>
+        <AltButton type="button"
+          disabled={!this.state.isChanged}
+          onClick={this.resetData}
+          >Cancel</AltButton>
+      </SaveHolder>
+    )
+  }
+
+  markupAddUser = () => {
+    return (
+      <Card>
+        <AddHolder onSubmit={this.addUser}>
+          <input name="user-name"
+            value={this.state.value}
+            onChange={this.handleChange}
+            type="text" />
+          <Button type="submit">Add person</Button>
+        </AddHolder>
+      </Card>
+    )
+  }
+
   render() {
     const userList = this.state.users.map((user, index) => {
       return (
@@ -260,40 +289,19 @@ class Users extends Component<{}, State> {
 
     return (
       <div>
-
         {/* <hr/>
         <ActiveUser />
         <hr/> */}
-        <Card>
-          <AddHolder onSubmit={this.addUser}>
-            <input name="user-name"
-              value={this.state.value}
-              onChange={this.handleChange}
-              type="text" />
-            <Button type="submit">Add person</Button>
-          </AddHolder>
-        </Card>
-
-        {this.state.users.length > 0 ?
+        {this.markupAddUser()}
+        {
+          this.state.users.length > 0 ?
           <Fragment>
             <ul>{userList}</ul>
-            <SaveHolder>
-              <Button type="button"
-                disabled={!this.state.isChanged}
-                onClick={this.saveData}
-              >Save</Button>
-              <AltButton type="button"
-                disabled={!this.state.isChanged}
-                onClick={this.resetData}
-              >Cancel</AltButton>
-            </SaveHolder>
+            {this.markupSaveHolder()}
           </Fragment>
-
           :
-
           <PlaceholderUsers />
         }
-
       </div>
     )
   }
