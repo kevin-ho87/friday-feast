@@ -10,6 +10,34 @@ const Holder = styled.div`
   background-color: ${props => props.isActive ? 'papayawhip' : '#fff' };
 `
 
+const EditForm = styled.form`
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 1fr repeat(2, auto);
+  grid-column-gap: .2rem;
+`
+
+const ListBox = styled.div`
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 1fr repeat(3, auto);
+  grid-column-gap: .2rem;
+`
+
+const ItemText = styled.span`
+  padding: 1rem;
+`
+
+const DirectionButtons = styled.div`
+  display: grid;
+  grid-row-gap: .2rem;
+  margin-right: .2rem;
+`
+
+const ArrowButton = AltButton.extend`
+  padding: 0 0.3rem;
+`
+
 type Props = {
   name: string,
   uid: number,
@@ -107,14 +135,7 @@ class UserItem extends React.Component<Props, State> {
     this.props.onActiveUser(this.props.index)
   }
 
-  markupUserHolder = () => {
-    const EditForm = styled.form`
-      flex: 1 1 auto;
-      display: grid;
-      grid-template-columns: 1fr repeat(2, auto);
-      grid-column-gap: .2rem;
-    `
-
+  markupIsEditHolder = () => {
     return (
       <EditForm onSubmit={this.handleSet}>
         <input
@@ -128,18 +149,7 @@ class UserItem extends React.Component<Props, State> {
     )
   }
 
-  markupHolder = () => {
-    const ListBox = styled.div`
-      flex: 1 1 auto;
-      display: grid;
-      grid-template-columns: 1fr repeat(3, auto);
-      grid-column-gap: .2rem;
-    `
-
-    const ItemText = styled.span`
-      padding: 1rem;
-    `
-
+  markupIsNotEditHolder = () => {
     return (
       <ListBox>
         <ItemText>{this.props.name}</ItemText>
@@ -151,16 +161,6 @@ class UserItem extends React.Component<Props, State> {
   }
 
   markupDirectionButtonsHolder = () => {
-    const DirectionButtons = styled.div`
-      display: grid;
-      grid-row-gap: .2rem;
-      margin-right: .2rem;
-    `
-
-    const ArrowButton = AltButton.extend`
-      padding: 0 0.3rem;
-    `
-
     return (
       <DirectionButtons>
         <ArrowButton type="button" title="Up" data-dir="-1" onClick={this.move.bind(this, -1)}>↑</ArrowButton>
@@ -173,7 +173,7 @@ class UserItem extends React.Component<Props, State> {
     return (
       <Holder isActive={this.props.isActive && true}>
         { this.markupDirectionButtonsHolder() }
-        { this.state.isEdit ? this.markupUserHolder() : this.markupHolder() }
+        { this.state.isEdit ? this.markupIsEditHolder() : this.markupIsNotEditHolder() }
       </Holder>
     )
   }
