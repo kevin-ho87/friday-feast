@@ -6,6 +6,7 @@ import firebase from '../fire'
 import { isEqual } from 'lodash'
 import { Button, AltButton } from '../style/Button'
 import { Card } from '../style/Card'
+import { PlaceholderUsers } from '../style/PlaceholderUsers'
 
 const SaveHolder = styled.div`
   background-color: #fff;
@@ -273,7 +274,7 @@ class Users extends Component<{}, State> {
           </AddHolder>
         </Card>
 
-        {this.state.users.length > 0 &&
+        {this.state.users.length > 0 ?
           <Fragment>
             <ul>{userList}</ul>
             <SaveHolder>
@@ -287,6 +288,10 @@ class Users extends Component<{}, State> {
               >Cancel</AltButton>
             </SaveHolder>
           </Fragment>
+
+          :
+
+          <PlaceholderUsers />
         }
 
       </div>
