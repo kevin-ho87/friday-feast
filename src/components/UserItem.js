@@ -78,7 +78,6 @@ class UserItem extends React.Component<Props, State> {
   }
 
   cancelEdit() {
-    // console.log('cancel edit')
     this.setState({
       isEdit: false,
       name: this.props.name
@@ -111,11 +110,9 @@ class UserItem extends React.Component<Props, State> {
   markupUserHolder = () => {
     const EditForm = styled.form`
       flex: 1 1 auto;
-      display: flex;
-
-      input {
-        flex: 1 1 auto;
-      }
+      display: grid;
+      grid-template-columns: 1fr repeat(2, auto);
+      grid-column-gap: .2rem;
     `
 
     return (
@@ -131,26 +128,25 @@ class UserItem extends React.Component<Props, State> {
     )
   }
 
-  markupButtonsHolder = () => {
-    const GG = styled.div`
+  markupHolder = () => {
+    const ListBox = styled.div`
       flex: 1 1 auto;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr repeat(3, auto);
+      grid-column-gap: .2rem;
     `
 
     const ItemText = styled.span`
-      flex: 1 1 auto;
-      display: inline-block;
       padding: 1rem;
-      margin-right: 1rem;
     `
 
     return (
-      <GG>
+      <ListBox>
         <ItemText>{this.props.name}</ItemText>
         <Button type="button" onClick={this.triggerEdit}>Edit</Button>
         <Button type="button" onClick={this.removeHandler}>Delete</Button>
         <AltButton type="button" disabled={this.props.isActive ? true : false} onClick={this.setActive}>Set as active</AltButton>
-      </GG>
+      </ListBox>
     )
   }
 
@@ -158,6 +154,7 @@ class UserItem extends React.Component<Props, State> {
     const DirectionButtons = styled.div`
       display: grid;
       grid-row-gap: .2rem;
+      margin-right: .2rem;
     `
 
     const ArrowButton = AltButton.extend`
@@ -176,7 +173,7 @@ class UserItem extends React.Component<Props, State> {
     return (
       <Holder isActive={this.props.isActive && true}>
         { this.markupDirectionButtonsHolder() }
-        { this.state.isEdit ? this.markupUserHolder() : this.markupButtonsHolder() }
+        { this.state.isEdit ? this.markupUserHolder() : this.markupHolder() }
       </Holder>
     )
   }
