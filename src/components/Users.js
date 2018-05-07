@@ -277,21 +277,8 @@ class Users extends Component<{}, State> {
       )
     })
 
-    const ActiveUser = () => {
-      if (typeof this.state.activeUserIndex === 'number' && this.state.users.length > this.state.activeUserIndex) {
-        return (
-          <p>The persons turn this week is {this.state.users[this.state.activeUserIndex].name}</p>
-        )
-      } else {
-        return ''
-      }
-    }
-
     return (
       <div>
-        {/* <hr/>
-        <ActiveUser />
-        <hr/> */}
         {this.markupAddUser()}
         {
           this.state.users.length > 0 ?
