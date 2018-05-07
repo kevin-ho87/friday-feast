@@ -1,11 +1,11 @@
 // @flow
 import React, { Component, Fragment } from 'react'
 import UserItem from '../components/UserItem'
+import AddUser from '../components/AddUser'
 import styled from 'styled-components'
 import firebase from '../fire'
 import { isEqual } from 'lodash'
 import { Button, AltButton } from '../style/Button'
-import { Card } from '../style/Card'
 import { PlaceholderUsers } from '../style/PlaceholderUsers'
 
 const SaveHolder = styled.div`
@@ -18,16 +18,7 @@ const SaveHolder = styled.div`
   }
 `
 
-const AddHolder = styled.form`
-  display: flex;
-  input {
-    flex: 1 1 auto;
-    margin-right: .2rem;
-  }
-`
-
 type State = {
-  value: string,
   users: Array<Object>,
   uid: number,
   activeUserIndex: ?number,
@@ -36,7 +27,6 @@ type State = {
 }
 
 class Users extends Component<{}, State> {
-  handleChange: () => void
   addUser: () => void
   onRemove: () => void
   handleUserEdit: () => void
@@ -49,7 +39,6 @@ class Users extends Component<{}, State> {
     super()
 
     this.state = {
-      value: '',
       users: [],
       uid: 0,
       activeUserIndex: null,
@@ -61,7 +50,6 @@ class Users extends Component<{}, State> {
       }
     }
 
-    this.handleChange = this.handleChange.bind(this)
     this.addUser = this.addUser.bind(this)
     this.onRemove = this.onRemove.bind(this)
     this.handleUserEdit = this.handleUserEdit.bind(this)
@@ -71,28 +59,17 @@ class Users extends Component<{}, State> {
     this.setActiveUser = this.setActiveUser.bind(this)
   }
 
-  handleChange(event: SyntheticInputEvent<HTMLInputElement>) {
-    this.setState({
-      value: event.currentTarget.value
-    })
-  }
-
-  addUser(event: SyntheticEvent<>) {
-    event.preventDefault()
-    const trimmedVal: string = this.state.value.trim()
-
+  addUser(name: String) {
     const userObj = {
-      name: trimmedVal,
+      name,
       uid: this.state.uid
     }
 
-    if (trimmedVal) {
-      this.setState((prevState) => ({
-        users: [...prevState.users, userObj],
-        value: '',
-        uid: prevState.uid + 1
-      }))
-    }
+    this.setState((prevState) => ({
+      users: [...prevState.users, userObj],
+      uid: prevState.uid + 1
+    }))
+
   }
 
   checkActiveUserSet = () => {
@@ -245,20 +222,6 @@ class Users extends Component<{}, State> {
     )
   }
 
-  markupAddUser = () => {
-    return (
-      <Card>
-        <AddHolder onSubmit={this.addUser}>
-          <input name="user-name"
-            value={this.state.value}
-            onChange={this.handleChange}
-            type="text" />
-          <Button type="submit">Add person</Button>
-        </AddHolder>
-      </Card>
-    )
-  }
-
   render() {
     const userList = this.state.users.map((user, index) => {
       return (
@@ -279,7 +242,7 @@ class Users extends Component<{}, State> {
 
     return (
       <div>
-        {this.markupAddUser()}
+        <AddUser onAddUser={this.addUser} />
         {
           this.state.users.length > 0 ?
           <Fragment>
