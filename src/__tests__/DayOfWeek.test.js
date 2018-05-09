@@ -4,7 +4,7 @@ import toJson from 'enzyme-to-json'
 
 import DayOfWeek from '../components/DayOfWeek'
 
-describe('Date component should render', () => {
+describe('Date component should render Friday as default', () => {
   it('test enzyme snapshot works', () => {
     const wrapper = shallow(<DayOfWeek />)
     expect(toJson(wrapper)).toMatchSnapshot()

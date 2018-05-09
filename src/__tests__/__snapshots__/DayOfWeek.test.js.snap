@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Date component should render test enzyme renders Tuesday in snapshot 1`] = `
-<p>
+exports[`Date component should render Friday as default test enzyme renders Tuesday in snapshot 1`] = `
+<React.Fragment>
   
       Tuesday
-      3
-      April
+      8
+      May
       2018
     
-</p>
+</React.Fragment>
 `;
 
-exports[`Date component should render test enzyme snapshot works 1`] = `
-<p>
+exports[`Date component should render Friday as default test enzyme snapshot works 1`] = `
+<React.Fragment>
   
       Friday
-      6
-      April
+      11
+      May
       2018
     
-</p>
+</React.Fragment>
 `;
