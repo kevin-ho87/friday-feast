@@ -1,9 +1,14 @@
-// TODO - add flowtype
+// @flow
 import * as React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { isAuthenticated } from '../fire'
 
-const PrivateRoute = ({ component: Component, loading, ...rest }) => {
+type Props = {
+  component: React.ComponentType<any>,
+  loading: boolean
+}
+
+const PrivateRoute = ({ component: Component, loading, ...rest }: Props) => {
   if (!loading) {
     return (<Route
       {...rest}
