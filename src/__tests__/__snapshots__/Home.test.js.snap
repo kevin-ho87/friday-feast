@@ -1,5 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Should render Home page/component edit state data 1`] = `
+<Home>
+  <styled.div>
+    <div
+      className="sc-bdVaJa qNUtU"
+    >
+      <styled.p>
+        <p
+          className="sc-bwzfXH dlIQYB"
+        >
+          🗓 This week: 
+          <DayOfWeek
+            dayIndex={5}
+          >
+            
+      Friday
+      11
+      May
+      2018
+    
+          </DayOfWeek>
+        </p>
+      </styled.p>
+      <styled.div>
+        <div
+          className="sc-ifAKCX cTeqPF"
+        >
+          <div>
+            <styled.h3>
+              <h3
+                className="sc-htpNat beciGA"
+              >
+                Hi 
+                <styled.span>
+                  <span
+                    className="sc-bxivhb kKGLjl"
+                  >
+                    Megatron
+                    !
+                  </span>
+                </styled.span>
+              </h3>
+            </styled.h3>
+            <p>
+              It is your turn to pick this week.
+            </p>
+          </div>
+          <styled.div
+            role="presentation"
+          >
+            <div
+              className="sc-EHOje hytPIO"
+              role="presentation"
+            >
+              🍔
+            </div>
+          </styled.div>
+        </div>
+      </styled.div>
+    </div>
+  </styled.div>
+</Home>
+`;
+
 exports[`Should render Home page/component snapshot should work 1`] = `
 <Home>
   <styled.div>
