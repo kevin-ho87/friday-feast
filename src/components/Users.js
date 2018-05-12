@@ -8,6 +8,12 @@ import { isEqual } from 'lodash'
 import { Button, AltButton } from '../style/Button'
 import { PlaceholderUsers } from '../style/PlaceholderUsers'
 
+const Page = styled.div`
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+`
+
 const SaveHolder = styled.div`
   background-color: #fff;
   padding: 1rem;
@@ -241,7 +247,7 @@ class Users extends Component<{}, State> {
     })
 
     return (
-      <div>
+      <Page>
         <AddUser onAddUser={this.addUser} />
         {
           this.state.users.length > 0 ?
@@ -252,7 +258,7 @@ class Users extends Component<{}, State> {
           :
           <PlaceholderUsers />
         }
-      </div>
+      </Page>
     )
   }
 }

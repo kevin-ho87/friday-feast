@@ -17,3 +17,6 @@ firebase.initializeApp(config)
 
 export default firebase
 export const auth = firebase.auth()
+export const isAuthenticated = () => {
+  return !!auth.currentUser
+}
