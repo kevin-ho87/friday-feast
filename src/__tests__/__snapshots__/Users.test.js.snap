@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render Users component Snapshot compare saveholder disabled prop should be true 1`] = `
+<Users__Page>
+  <AddUser
+    onAddUser={[Function]}
+  />
+  <React.Fragment>
+    <ul>
+      <li
+        key="4"
+      >
+        <UserItem
+          index={0}
+          isActive={true}
+          name="Megatron"
+          onActiveUser={[Function]}
+          onMove={[Function]}
+          onRemove={[Function]}
+          uid={4}
+          userEdited={[Function]}
+        />
+      </li>
+    </ul>
+    <Users__SaveHolder>
+      <Button
+        disabled={true}
+        onClick={[Function]}
+        type="button"
+      >
+        Save
+      </Button>
+      <Button
+        disabled={true}
+        onClick={[Function]}
+        type="button"
+      >
+        Cancel
+      </Button>
+    </Users__SaveHolder>
+  </React.Fragment>
+</Users__Page>
+`;
+
+exports[`Should render Users component snapshot should work 1`] = `
+<Users__Page>
+  <AddUser
+    onAddUser={[Function]}
+  />
+  <PlaceholderUsers />
+</Users__Page>
+`;
