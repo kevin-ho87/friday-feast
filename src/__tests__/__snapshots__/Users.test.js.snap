@@ -1,45 +1,529 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render Users component Snapshot compare saveholder disabled prop should be true 1`] = `
-<Users__Page>
-  <AddUser
-    onAddUser={[Function]}
-  />
-  <React.Fragment>
-    <ul>
-      <li
-        key="4"
+exports[`Should render Users component addUser fn test snapshot 1`] = `
+.c3 {
+  display: inline-block;
+  font-size: 1rem;
+  color: #fff;
+  padding: 1rem;
+  background-color: #FF5A5F;
+  border: 0;
+  border-radius: 3px;
+  opacity: 1;
+}
+
+.c6 {
+  display: inline-block;
+  font-size: 1rem;
+  color: #fff;
+  padding: 1rem;
+  background-color: #FF5A5F;
+  border: 0;
+  border-radius: 3px;
+  opacity: 1;
+  color: #FF5A5F;
+  border: 1px solid #FF5A5F;
+  background-color: #fff;
+  padding: 0 0.3rem;
+}
+
+.c9 {
+  display: inline-block;
+  font-size: 1rem;
+  color: #fff;
+  padding: 1rem;
+  background-color: #FF5A5F;
+  border: 0;
+  border-radius: 3px;
+  opacity: 1;
+  color: #FF5A5F;
+  border: 1px solid #FF5A5F;
+  background-color: #fff;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  background-color: #fff;
+}
+
+.c7 {
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 1fr repeat(3,auto);
+  grid-column-gap: .2rem;
+}
+
+.c8 {
+  padding: 1rem;
+}
+
+.c5 {
+  display: grid;
+  grid-row-gap: .2rem;
+  margin-right: .2rem;
+}
+
+.c1 {
+  background-color: #fff;
+  padding: 1rem;
+  box-shadow: 0 0 4px rgba(0,0,0,.3);
+  border-radius: 3px;
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 input {
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  margin-right: .2rem;
+}
+
+.c0 {
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.c10 {
+  background-color: #fff;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.c10 button {
+  margin-right: .2rem;
+}
+
+<Users>
+  <Users__Page>
+    <div
+      className="c0"
+    >
+      <AddUser
+        onAddUser={[Function]}
       >
-        <UserItem
-          index={0}
-          isActive={true}
-          name="Megatron"
-          onActiveUser={[Function]}
-          onMove={[Function]}
-          onRemove={[Function]}
-          uid={4}
-          userEdited={[Function]}
-        />
-      </li>
-    </ul>
-    <Users__SaveHolder>
-      <Button
-        disabled={true}
-        onClick={[Function]}
-        type="button"
-      >
-        Save
-      </Button>
-      <Button
-        disabled={true}
-        onClick={[Function]}
-        type="button"
-      >
-        Cancel
-      </Button>
-    </Users__SaveHolder>
-  </React.Fragment>
-</Users__Page>
+        <Card>
+          <div
+            className="c1"
+          >
+            <AddUser__AddHolder
+              onSubmit={[Function]}
+            >
+              <form
+                className="c2"
+                onSubmit={[Function]}
+              >
+                <input
+                  name="user-name"
+                  onChange={[Function]}
+                  type="text"
+                  value=""
+                />
+                <Button
+                  type="submit"
+                >
+                  <button
+                    className="c3"
+                    type="submit"
+                  >
+                    Add person
+                  </button>
+                </Button>
+              </form>
+            </AddUser__AddHolder>
+          </div>
+        </Card>
+      </AddUser>
+      <ul>
+        <li
+          key="4"
+        >
+          <UserItem
+            index={0}
+            isActive={false}
+            name="Megatron"
+            onActiveUser={[Function]}
+            onMove={[Function]}
+            onRemove={[Function]}
+            uid={4}
+            userEdited={[Function]}
+          >
+            <UserItem__Holder
+              isActive={false}
+            >
+              <div
+                className="c4"
+              >
+                <UserItem__DirectionButtons>
+                  <div
+                    className="c5"
+                  >
+                    <Button
+                      data-dir="-1"
+                      onClick={[Function]}
+                      title="Up"
+                      type="button"
+                    >
+                      <button
+                        className="c6"
+                        data-dir="-1"
+                        onClick={[Function]}
+                        title="Up"
+                        type="button"
+                      >
+                        ↑
+                      </button>
+                    </Button>
+                    <Button
+                      data-dir="1"
+                      onClick={[Function]}
+                      title="Down"
+                      type="button"
+                    >
+                      <button
+                        className="c6"
+                        data-dir="1"
+                        onClick={[Function]}
+                        title="Down"
+                        type="button"
+                      >
+                        ↓
+                      </button>
+                    </Button>
+                  </div>
+                </UserItem__DirectionButtons>
+                <UserItem__ListBox>
+                  <div
+                    className="c7"
+                  >
+                    <UserItem__ItemText>
+                      <span
+                        className="c8"
+                      >
+                        Megatron
+                      </span>
+                    </UserItem__ItemText>
+                    <Button
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <button
+                        className="c3"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Edit
+                      </button>
+                    </Button>
+                    <Button
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <button
+                        className="c3"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Delete
+                      </button>
+                    </Button>
+                    <Button
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <button
+                        className="c9"
+                        disabled={false}
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Set as active
+                      </button>
+                    </Button>
+                  </div>
+                </UserItem__ListBox>
+              </div>
+            </UserItem__Holder>
+          </UserItem>
+        </li>
+        <li
+          key="6"
+        >
+          <UserItem
+            index={1}
+            isActive={false}
+            name="GG"
+            onActiveUser={[Function]}
+            onMove={[Function]}
+            onRemove={[Function]}
+            uid={6}
+            userEdited={[Function]}
+          >
+            <UserItem__Holder
+              isActive={false}
+            >
+              <div
+                className="c4"
+              >
+                <UserItem__DirectionButtons>
+                  <div
+                    className="c5"
+                  >
+                    <Button
+                      data-dir="-1"
+                      onClick={[Function]}
+                      title="Up"
+                      type="button"
+                    >
+                      <button
+                        className="c6"
+                        data-dir="-1"
+                        onClick={[Function]}
+                        title="Up"
+                        type="button"
+                      >
+                        ↑
+                      </button>
+                    </Button>
+                    <Button
+                      data-dir="1"
+                      onClick={[Function]}
+                      title="Down"
+                      type="button"
+                    >
+                      <button
+                        className="c6"
+                        data-dir="1"
+                        onClick={[Function]}
+                        title="Down"
+                        type="button"
+                      >
+                        ↓
+                      </button>
+                    </Button>
+                  </div>
+                </UserItem__DirectionButtons>
+                <UserItem__ListBox>
+                  <div
+                    className="c7"
+                  >
+                    <UserItem__ItemText>
+                      <span
+                        className="c8"
+                      >
+                        GG
+                      </span>
+                    </UserItem__ItemText>
+                    <Button
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <button
+                        className="c3"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Edit
+                      </button>
+                    </Button>
+                    <Button
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <button
+                        className="c3"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Delete
+                      </button>
+                    </Button>
+                    <Button
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <button
+                        className="c9"
+                        disabled={false}
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Set as active
+                      </button>
+                    </Button>
+                  </div>
+                </UserItem__ListBox>
+              </div>
+            </UserItem__Holder>
+          </UserItem>
+        </li>
+        <li
+          key="7"
+        >
+          <UserItem
+            index={2}
+            isActive={false}
+            name="totoro"
+            onActiveUser={[Function]}
+            onMove={[Function]}
+            onRemove={[Function]}
+            uid={7}
+            userEdited={[Function]}
+          >
+            <UserItem__Holder
+              isActive={false}
+            >
+              <div
+                className="c4"
+              >
+                <UserItem__DirectionButtons>
+                  <div
+                    className="c5"
+                  >
+                    <Button
+                      data-dir="-1"
+                      onClick={[Function]}
+                      title="Up"
+                      type="button"
+                    >
+                      <button
+                        className="c6"
+                        data-dir="-1"
+                        onClick={[Function]}
+                        title="Up"
+                        type="button"
+                      >
+                        ↑
+                      </button>
+                    </Button>
+                    <Button
+                      data-dir="1"
+                      onClick={[Function]}
+                      title="Down"
+                      type="button"
+                    >
+                      <button
+                        className="c6"
+                        data-dir="1"
+                        onClick={[Function]}
+                        title="Down"
+                        type="button"
+                      >
+                        ↓
+                      </button>
+                    </Button>
+                  </div>
+                </UserItem__DirectionButtons>
+                <UserItem__ListBox>
+                  <div
+                    className="c7"
+                  >
+                    <UserItem__ItemText>
+                      <span
+                        className="c8"
+                      >
+                        totoro
+                      </span>
+                    </UserItem__ItemText>
+                    <Button
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <button
+                        className="c3"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Edit
+                      </button>
+                    </Button>
+                    <Button
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <button
+                        className="c3"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Delete
+                      </button>
+                    </Button>
+                    <Button
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <button
+                        className="c9"
+                        disabled={false}
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Set as active
+                      </button>
+                    </Button>
+                  </div>
+                </UserItem__ListBox>
+              </div>
+            </UserItem__Holder>
+          </UserItem>
+        </li>
+      </ul>
+      <Users__SaveHolder>
+        <div
+          className="c10"
+        >
+          <Button
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <button
+              className="c3"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Save
+            </button>
+          </Button>
+          <Button
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <button
+              className="c9"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Cancel
+            </button>
+          </Button>
+        </div>
+      </Users__SaveHolder>
+    </div>
+  </Users__Page>
+</Users>
 `;
 
 exports[`Should render Users component snapshot should work 1`] = `

@@ -97,7 +97,7 @@ describe('Should render Users component', () => {
   it('Window confirm to be called', () => {
     window.confirm = jest.fn(() => true)
 
-    const mountwrapper = mount(<Users />);
+    const mountwrapper = mount(<Users />)
 
     mountwrapper.setState({
       users: [
@@ -116,6 +116,38 @@ describe('Should render Users component', () => {
 
     expect(window.confirm).toBeCalled()
   })
+
+  it('addUser fn called', () => {
+    const addMock = jest.fn()
+    wrapper.instance().addUser = addMock
+    wrapper.update()
+    wrapper.instance().addUser('gg')
+    expect(addMock).toBeCalledWith('gg')
+  })
+
+  it('addUser fn test snapshot', () => {
+    const mountwrapper = mount(<Users />)
+    mountwrapper.setState({
+      users: [
+        { name: 'Megatron', uid: 4 },
+        { name: 'GG', uid: 6 }
+      ],
+      uid: 7
+    })
+
+    const theInput = mountwrapper.find('AddUser input')
+    theInput.instance().value = "totoro"
+    theInput.simulate('change')
+
+    mountwrapper.find('AddUser Button').simulate('submit')
+
+    expect(toJson(mountwrapper)).toMatchSnapshot()
+    // expect(mountwrapper.find('UserItem')).toHaveLength(4)
+  })
+
+  it('Check active user set when last user deleted')
+  it('Edit particular user name')
+  it('Moved user item')
 })
 
 
