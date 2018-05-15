@@ -145,7 +145,22 @@ describe('Should render Users component', () => {
     // expect(mountwrapper.find('UserItem')).toHaveLength(4)
   })
 
-  it('Check active user set when last user deleted')
+  it('Check active user set when last user deleted', () => {
+    const mountwrapper = mount(<Users />)
+    mountwrapper.setState({
+      users: [
+        { name: 'Jojo', uid: 3 },
+        { name: 'Megatron', uid: 4 },
+        { name: 'GG', uid: 6 }
+      ],
+      uid: 7,
+      activeUserIndex: 2
+    })
+
+    mountwrapper.find('UserItem').at(2).find('Button').at(3).simulate('click')
+    expect(mountwrapper.find('UserItem').at(1).props().isActive).toEqual(true)
+  })
+
   it('Edit particular user name')
   it('Moved user item')
 })
