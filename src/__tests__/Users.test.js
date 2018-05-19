@@ -161,7 +161,26 @@ describe('Should render Users component', () => {
     expect(mountwrapper.find('UserItem').at(1).props().isActive).toEqual(true)
   })
 
-  it('Edit particular user name')
+  it('Edit particular user name', () => {
+    const mountwrapper = mount(<Users />)
+    mountwrapper.setState({
+      users: [
+        { name: 'Jojo', uid: 3 },
+        { name: 'Megatron', uid: 4 }
+      ]
+    })
+
+    mountwrapper.find('UserItem').at(0).find('Button').at(2).simulate('click')
+
+    const theInput = mountwrapper.find('UserItem').at(0).find('input')
+    theInput.instance().value = "Totoro"
+    theInput.simulate('change')
+
+    mountwrapper.find('UserItem').at(0).find('form').find('Button').at(0).simulate('submit')
+
+    expect(mountwrapper.find('UserItem').at(0).props().name).toEqual('Totoro')
+  })
+
   it('Moved user item')
 })
 
