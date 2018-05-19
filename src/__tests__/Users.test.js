@@ -181,7 +181,32 @@ describe('Should render Users component', () => {
     expect(mountwrapper.find('UserItem').at(0).props().name).toEqual('Totoro')
   })
 
-  it('Moved user item')
+  it('Moved user item down does move', () => {
+    const mountwrapper = mount(<Users />)
+    mountwrapper.setState({
+      users: [
+        { name: 'Zoro', uid: 1 },
+        { name: 'Chopper', uid: 2 }
+      ]
+    })
+
+    mountwrapper.find('UserItem').at(0).find('Button').at(1).simulate('click')
+    expect(mountwrapper.find('UserItem').at(0).props().name).toEqual('Chopper')
+    // expect(toJson(mountwrapper)).toMatchSnapshot()
+  })
+
+  it('Moved user item up does not move', () => {
+    const mountwrapper = mount(<Users />)
+    mountwrapper.setState({
+      users: [
+        { name: 'Brook', uid: 1 },
+        { name: 'Usop', uid: 2 }
+      ]
+    })
+
+    mountwrapper.find('UserItem').at(0).find('Button').at(0).simulate('click')
+    expect(mountwrapper.find('UserItem').at(0).props().name).toEqual('Brook')
+  })
 })
 
 
