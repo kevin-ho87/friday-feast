@@ -6,6 +6,9 @@ type Props = {
 }
 
 const DayOfWeek = ({ dayIndex }: Props) => {
+  if (dayIndex < 1 || dayIndex > 7 ) {
+    return
+  }
   const today: Date = new Date()
   const theDay: Date = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + dayIndex)
 
