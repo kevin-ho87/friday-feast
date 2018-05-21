@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddUser component Render AddUser snapshot 1`] = `
+<Card>
+  <AddUser__AddHolder
+    onSubmit={[Function]}
+  >
+    <input
+      name="user-name"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <Button
+      type="submit"
+    >
+      Add person
+    </Button>
+  </AddUser__AddHolder>
+</Card>
+`;
