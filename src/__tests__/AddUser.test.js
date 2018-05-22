@@ -26,11 +26,28 @@ describe('AddUser component', () => {
     expect(wrapper.state('value')).toEqual('Megatron')
   })
 
-  it('Form submit should call with value')
-  it('Form submit should reset state value')
+  it('Form submit should call with value', () => {
+    const mockFn = jest.fn()
+    const wrapper = mount(<AddUser onAddUser={mockFn} />)
 
+    wrapper.setState({
+      value: 'Chopper'
+    })
 
+    wrapper.find('Button').simulate('submit')
 
+    expect(mockFn).toBeCalledWith('Chopper')
+  })
 
+  it('Form submit should reset state value', () => {
+    const wrapper = mount(<AddUser onAddUser={jest.fn()} />)
 
+    wrapper.setState({
+      value: 'Nami'
+    })
+
+    wrapper.find('Button').simulate('submit')
+
+    expect(wrapper.state('value')).toEqual('')
+  })
 })
