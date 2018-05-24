@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component Render snapshot 1`] = `
+<Card>
+  <form
+    onSubmit={[Function]}
+  >
+    <Login__FormRow>
+      <Login__Label>
+        Username
+      </Login__Label>
+      <Login__Input
+        name="username"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+    </Login__FormRow>
+    <Login__FormRow>
+      <Login__Label>
+        Password
+      </Login__Label>
+      <Login__Input
+        name="password"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+    </Login__FormRow>
+    <Button
+      disabled={false}
+      type="submit"
+    >
+      Sign in
+    </Button>
+  </form>
+</Card>
+`;
