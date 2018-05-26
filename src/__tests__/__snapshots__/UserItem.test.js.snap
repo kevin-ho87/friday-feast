@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserItem component Render snapshot 1`] = `
+<UserItem__Holder
+  isActive={true}
+>
+  <UserItem__DirectionButtons>
+    <Button
+      data-dir="-1"
+      onClick={[Function]}
+      title="Up"
+      type="button"
+    >
+      ↑
+    </Button>
+    <Button
+      data-dir="1"
+      onClick={[Function]}
+      title="Down"
+      type="button"
+    >
+      ↓
+    </Button>
+  </UserItem__DirectionButtons>
+  <UserItem__ListBox>
+    <UserItem__ItemText>
+      Megatron
+    </UserItem__ItemText>
+    <Button
+      onClick={[Function]}
+      type="button"
+    >
+      Edit
+    </Button>
+    <Button
+      onClick={[Function]}
+      type="button"
+    >
+      Delete
+    </Button>
+    <Button
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      Set as active
+    </Button>
+  </UserItem__ListBox>
+</UserItem__Holder>
+`;
