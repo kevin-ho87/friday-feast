@@ -11,15 +11,4 @@ exports[`Date component Render Friday as default 1`] = `
 </React.Fragment>
 `;
 
-exports[`Date component Renders Tuesday in snapshot 1`] = `
-<React.Fragment>
-  
-      Tuesday
-      22
-      May
-      2018
-    
-</React.Fragment>
-`;
-
 exports[`Date component test number out of week 1`] = `""`;

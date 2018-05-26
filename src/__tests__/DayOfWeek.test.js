@@ -10,9 +10,10 @@ describe('Date component', () => {
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
-  it('Renders Tuesday in snapshot', () => {
+  it('Renders Tuesday in text within', () => {
     const wrapper = shallow(<DayOfWeek dayIndex={2} />)
-    expect(toJson(wrapper)).toMatchSnapshot()
+
+    expect(wrapper.text()).toContain('Tuesday')
   })
 
   it('test number out of week', () => {
