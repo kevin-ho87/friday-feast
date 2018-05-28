@@ -100,3 +100,30 @@ describe('UserItem component delete actions', () => {
     expect(mockRemove).toBeCalledWith(3)
   })
 })
+
+describe('UserItem component arrow buttons', () => {
+  it('Direction button did render', () => {
+    const wrapper = shallow(<UserItem />)
+    const dirBtn = wrapper.find('UserItem__DirectionButtons Button')
+
+    expect(dirBtn).toHaveLength(2)
+  })
+
+  it('Up direction button calls fn on click', () => {
+    const mockFn = jest.fn()
+    const wrapper = shallow(<UserItem index={2} onMove={mockFn} />)
+
+    wrapper.find('UserItem__DirectionButtons Button').at(0).simulate('click')
+
+    expect(mockFn).toBeCalledWith(-1,2)
+  })
+
+  it('Down direction button calls fn on click', () => {
+    const mockFn = jest.fn()
+    const wrapper = shallow(<UserItem index={2} onMove={mockFn} />)
+
+    wrapper.find('UserItem__DirectionButtons Button').at(1).simulate('click')
+
+    expect(mockFn).toBeCalledWith(1, 2)
+  })
+})

@@ -6,7 +6,6 @@ exports[`UserItem component Render snapshot 1`] = `
 >
   <UserItem__DirectionButtons>
     <Button
-      data-dir="-1"
       onClick={[Function]}
       title="Up"
       type="button"
@@ -14,7 +13,6 @@ exports[`UserItem component Render snapshot 1`] = `
       ↑
     </Button>
     <Button
-      data-dir="1"
       onClick={[Function]}
       title="Down"
       type="button"

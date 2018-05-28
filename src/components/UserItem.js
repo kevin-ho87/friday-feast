@@ -163,8 +163,8 @@ class UserItem extends React.Component<Props, State> {
   markupDirectionButtonsHolder = () => {
     return (
       <DirectionButtons>
-        <ArrowButton type="button" title="Up" data-dir="-1" onClick={this.move.bind(this, -1)}>↑</ArrowButton>
-        <ArrowButton type="button" title="Down" data-dir="1" onClick={this.move.bind(this, 1)}>↓</ArrowButton>
+        <ArrowButton type="button" title="Up" onClick={this.move.bind(this, -1)}>↑</ArrowButton>
+        <ArrowButton type="button" title="Down" onClick={this.move.bind(this, 1)}>↓</ArrowButton>
       </DirectionButtons>
     )
   }
