@@ -54,6 +54,21 @@ describe('UserItem component edit actions', () => {
 
     expect(wrapper.state('name')).toEqual('Chopper')
   })
+
+  it('Edit cancel should revert to prop value', () => {
+    const wrapper = mount(<UserItem name="Megatron" />)
+
+    wrapper.find('UserItem__ListBox').find('Button').at(0).simulate('click')
+    const theInput = wrapper.find('input')
+    theInput.instance().value = 'totoro'
+    theInput.simulate('change')
+
+    expect(wrapper.state('name')).toEqual('totoro')
+
+    wrapper.find('UserItem__EditForm').find('Button').at(1).simulate('click')
+
+    expect(wrapper.state('name')).toEqual('Megatron')
+  })
 })
 
 describe('UserItem component setActive actions', () => {
