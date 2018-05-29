@@ -9,7 +9,6 @@ import PrivateRoute from './components/PrivateRoute'
 
 
 const Home = AsyncLoader(() => import('./pages/Home'))
-const Admin = AsyncLoader(() => import('./pages/Admin'))
 const Login = AsyncLoader(() => import('./components/Login'))
 const Users = AsyncLoader(() => import('./components/Users'))
 
