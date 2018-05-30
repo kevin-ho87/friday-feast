@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Card } from '../style/Card'
 import DayOfWeek from '../components/DayOfWeek'
 import firebase from '../fire'
+import UsersList from '../components/UsersList'
 
 const DateText = styled.p`
   margin-top: 0;
@@ -40,6 +41,8 @@ const LoadingBox = styled.div`
 
 type State = {
   isLoaded: boolean,
+  users: Array<Object>,
+  activeUserIndex: number,
   activeUserName: string
 }
 
@@ -49,6 +52,8 @@ class Home extends Component<{}, State> {
 
     this.state = {
       isLoaded: false,
+      users: [],
+      activeUserIndex: 0,
       activeUserName: ''
     }
   }
@@ -66,6 +71,8 @@ class Home extends Component<{}, State> {
 
       this.setState({
         isLoaded: true,
+        users,
+        activeUserIndex,
         activeUserName: users[activeUserIndex].name
       })
     })
@@ -88,6 +95,7 @@ class Home extends Component<{}, State> {
             <Icon role="presentation">🍔</Icon>
           </ContentHolder>
         </Card>
+        <UsersList users={this.state.users} activeUserIndex={this.state.activeUserIndex} />
       </Fragment>
     )
   }
