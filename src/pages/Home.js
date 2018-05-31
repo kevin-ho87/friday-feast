@@ -94,8 +94,8 @@ class Home extends Component<{}, State> {
             </div>
             <Icon role="presentation">🍔</Icon>
           </ContentHolder>
+          <UsersList users={this.state.users} activeUserIndex={this.state.activeUserIndex} />
         </Card>
-        <UsersList users={this.state.users} activeUserIndex={this.state.activeUserIndex} />
       </Fragment>
     )
   }

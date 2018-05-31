@@ -1,15 +1,16 @@
 // @flow
 import * as React from 'react'
 import styled from 'styled-components'
-import { Card } from '../style/Card'
 
 const ListHolder = styled.ul`
-  margin: 0;
+  margin-top: .5rem;
+  margin-bottom: 0;
 `
 
 const List = styled.li`
-  background-color: ${props => props.isActive ? 'papayawhip' : '#fff'};
+  background-color: ${props => props.isActive ? '#eee' : '#fff'};
   padding: .5rem;
+  border-top: 1px solid #eee;
 `
 
 type Props = {
@@ -29,11 +30,9 @@ const UsersList = ({ users, activeUserIndex }: Props) => {
   })
 
   return (
-    <Card>
-      <ListHolder>
-        {userList}
-      </ListHolder>
-    </Card>
+    <ListHolder>
+      {userList}
+    </ListHolder>
   )
 }
 
