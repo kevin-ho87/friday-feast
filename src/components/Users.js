@@ -71,11 +71,12 @@ class Users extends Component<{}, State> {
       uid: this.state.uid
     }
 
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       users: [...prevState.users, userObj],
       uid: prevState.uid + 1
-    }))
-
+    }), () => {
+      this.checkActiveUserSet()
+    })
   }
 
   checkActiveUserSet = () => {
@@ -84,9 +85,9 @@ class Users extends Component<{}, State> {
     const { activeUserIndex } = this.state
 
     this.setState(prevState => {
-      if ((typeof prevState.activeUserIndex === 'number') && (usersLength <= prevState.activeUserIndex)) {
+      if ((typeof prevState.activeUserIndex === 'number') && (usersLength <= prevState.activeUserIndex) && (usersLength > 0)) {
         return ({
-          activeUserIndex: prevState.activeUserIndex -1
+          activeUserIndex: prevState.activeUserIndex - 1
         })
       }
     })

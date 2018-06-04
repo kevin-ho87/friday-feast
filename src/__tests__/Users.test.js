@@ -161,6 +161,33 @@ describe('Should render Users component', () => {
     expect(mountwrapper.find('UserItem').at(1).props().isActive).toEqual(true)
   })
 
+  it('When all users are deleted and then new item added, active index is first', () => {
+    const mountwrapper = mount(<Users />)
+    mountwrapper.setState({
+      users: [
+        { name: 'Jojo', uid: 3 },
+        { name: 'Megatron', uid: 4 }
+      ],
+      uid: 7,
+      activeUserIndex: 1
+    })
+
+    // Remove items
+    mountwrapper.find('UserItem').at(1).find('Button').at(3).simulate('click')
+    expect(mountwrapper.state('activeUserIndex')).toEqual(0)
+    mountwrapper.find('UserItem').at(0).find('Button').at(3).simulate('click')
+
+    // Add item
+    const theInput = mountwrapper.find('AddUser input')
+    theInput.instance().value = "totoro"
+    theInput.simulate('change')
+
+    mountwrapper.find('AddUser Button').simulate('submit')
+
+    expect(mountwrapper.state('activeUserIndex')).toEqual(0)
+
+  })
+
   it('Edit particular user name', () => {
     const mountwrapper = mount(<Users />)
     mountwrapper.setState({
