@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import UserItem from '../components/UserItem'
 import AddUser from '../components/AddUser'
 import styled from 'styled-components'
@@ -146,7 +146,8 @@ class Users extends Component<{}, State> {
     arrFire.forEach((item, index) => {
       firebase.database().ref(item).on('value', snapshot => {
         let newState = {}
-        newState[arrState[index]] = snapshot.val()
+
+        newState[arrState[index]] = (snapshot.val() === null) ? [] : snapshot.val()
 
         this.setState((prevState, props) => ({
           ...newState,
@@ -230,7 +231,8 @@ class Users extends Component<{}, State> {
   }
 
   render() {
-    const userList = this.state.users.map((user, index) => {
+    const { users } = this.state
+    const userList = users.map((user, index) => {
       return (
         <li key={user.uid}>
           <UserItem
@@ -251,14 +253,12 @@ class Users extends Component<{}, State> {
       <Page>
         <AddUser onAddUser={this.addUser} />
         {
-          this.state.users.length > 0 ?
-          <Fragment>
-            <ul>{userList}</ul>
-            {this.markupSaveHolder()}
-          </Fragment>
+          users.length > 0 ?
+          <ul>{userList}</ul>
           :
           <PlaceholderUsers />
         }
+        {this.markupSaveHolder()}
       </Page>
     )
   }
