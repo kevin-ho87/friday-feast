@@ -2,13 +2,13 @@
 
 exports[`Should render Home page/component edit state data 1`] = `
 <Home>
-  <styled.div>
+  <Card>
     <div
-      className="sc-bdVaJa qNUtU"
+      className="Card-RQot etQKCJ"
     >
-      <styled.p>
+      <Home__DateText>
         <p
-          className="sc-bwzfXH dlIQYB"
+          className="Home__DateText-esEHDJ bwIpuS"
         >
           🗓 This week: 
           <DayOfWeek
@@ -16,63 +16,55 @@ exports[`Should render Home page/component edit state data 1`] = `
           >
             
       Friday
-      11
-      May
+      8
+      June
       2018
     
           </DayOfWeek>
         </p>
-      </styled.p>
-      <styled.div>
+      </Home__DateText>
+      <Home__ContentHolder>
         <div
-          className="sc-ifAKCX cTeqPF"
+          className="Home__ContentHolder-gUdnxm iZrFBv"
         >
           <div>
-            <styled.h3>
-              <h3
-                className="sc-htpNat beciGA"
-              >
-                Hi 
-                <styled.span>
-                  <span
-                    className="sc-bxivhb kKGLjl"
-                  >
-                    Megatron
-                    !
-                  </span>
-                </styled.span>
-              </h3>
-            </styled.h3>
-            <p>
-              It is your turn to pick this week.
-            </p>
+            <Home__DummyBox>
+              <div
+                className="Home__DummyBox-fvtzal cVwnRB"
+              />
+            </Home__DummyBox>
+            <Home__DummyBox>
+              <div
+                className="Home__DummyBox-fvtzal gMBrnO"
+              />
+            </Home__DummyBox>
           </div>
-          <styled.div
+          <Home__Icon
             role="presentation"
           >
             <div
-              className="sc-EHOje hytPIO"
+              className="Home__Icon-hrYzli jWbxKN"
               role="presentation"
             >
               🍔
             </div>
-          </styled.div>
+          </Home__Icon>
         </div>
-      </styled.div>
+      </Home__ContentHolder>
     </div>
-  </styled.div>
+  </Card>
 </Home>
 `;
 
-exports[`Should render Home page/component snapshot should work 1`] = `
+exports[`Should render Home page/component mounted snapshot should work 1`] = `
 <Home>
-  <styled.div>
+  <Card>
     <div
-      className="sc-bdVaJa qNUtU"
+      className="Card-RQot etQKCJ"
     >
-      <styled.p>
+      <Home__DateText>
         <p
-          className="sc-bwzfXH dlIQYB"
+          className="Home__DateText-esEHDJ bwIpuS"
         >
           🗓 This week: 
           <DayOfWeek
@@ -80,40 +72,117 @@ exports[`Should render Home page/component snapshot should work 1`] = `
           >
             
       Friday
-      11
-      May
+      8
+      June
       2018
     
           </DayOfWeek>
         </p>
-      </styled.p>
-      <styled.div>
+      </Home__DateText>
+      <Home__ContentHolder>
         <div
-          className="sc-ifAKCX cTeqPF"
+          className="Home__ContentHolder-gUdnxm iZrFBv"
         >
           <div>
-            <styled.div>
+            <Home__DummyBox>
               <div
-                className="sc-bZQynM iTFdCi"
+                className="Home__DummyBox-fvtzal cVwnRB"
               />
-            </styled.div>
-            <p>
-              It is your turn to pick this week.
-            </p>
+            </Home__DummyBox>
+            <Home__DummyBox>
+              <div
+                className="Home__DummyBox-fvtzal gMBrnO"
+              />
+            </Home__DummyBox>
           </div>
-          <styled.div
+          <Home__Icon
             role="presentation"
           >
             <div
-              className="sc-EHOje hytPIO"
+              className="Home__Icon-hrYzli jWbxKN"
               role="presentation"
             >
               🍔
             </div>
-          </styled.div>
+          </Home__Icon>
         </div>
-      </styled.div>
+      </Home__ContentHolder>
     </div>
-  </styled.div>
+  </Card>
 </Home>
+`;
+
+exports[`Should render Home page/component shallow snapshot should work 1`] = `
+<React.Fragment>
+  <Card>
+    <Home__DateText>
+      🗓 This week: 
+      <DayOfWeek
+        dayIndex={5}
+      />
+    </Home__DateText>
+    <Home__ContentHolder>
+      <div>
+        <React.Fragment>
+          <Home__DummyBox />
+          <Home__DummyBox />
+        </React.Fragment>
+      </div>
+      <Home__Icon
+        role="presentation"
+      >
+        🍔
+      </Home__Icon>
+    </Home__ContentHolder>
+  </Card>
+</React.Fragment>
+`;
+
+exports[`Should render Home page/component shallow snapshot with data 1`] = `
+<React.Fragment>
+  <Card>
+    <Home__DateText>
+      🗓 This week: 
+      <DayOfWeek
+        dayIndex={5}
+      />
+    </Home__DateText>
+    <Home__ContentHolder>
+      <div>
+        <React.Fragment>
+          <Home__Title>
+            Hi 
+            <Home__PersonName>
+              Megatron
+              !
+            </Home__PersonName>
+          </Home__Title>
+          <p>
+            It is your turn to pick this week.
+          </p>
+        </React.Fragment>
+      </div>
+      <Home__Icon
+        role="presentation"
+      >
+        🍔
+      </Home__Icon>
+    </Home__ContentHolder>
+    <UsersList
+      activeUserIndex={0}
+      users={
+        Array [
+          Object {
+            "name": "Megatron",
+            "uid": 4,
+          },
+          Object {
+            "name": "Jojo",
+            "uid": 6,
+          },
+        ]
+      }
+    />
+  </Card>
+</React.Fragment>
 `;

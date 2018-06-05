@@ -33,10 +33,19 @@ const Icon = styled.div`
   font-size: 4rem;
 `
 
-const LoadingBox = styled.div`
+const DummyBox = styled.div`
+  background-color: #eee;
+`
+
+const LoadingBox = DummyBox.extend`
   height: 2.9rem;
   width: 200px;
-  background-color: #eee;
+  margin-bottom: 1rem;
+`
+
+const DummyText = DummyBox.extend`
+  height: 1rem;
+  width: 240px;
 `
 
 type State = {
@@ -66,35 +75,44 @@ class Home extends Component<{}, State> {
     let promises = [itemsRef, activeUserIndex]
 
     Promise.all(promises).then(values => {
-      const users = values[0].val()
+      const users = values[0].val() !== values[0].val() ? values[0].val() : []
       const activeUserIndex: number = values[1].val()
+      const activeUserName = users.length ? users[activeUserIndex].name : ''
 
       this.setState({
         isLoaded: true,
         users,
         activeUserIndex,
-        activeUserName: users[activeUserIndex].name
+        activeUserName
       })
     })
   }
 
   render() {
+    const { users } = this.state
+
     return (
       <Fragment>
         <Card>
           <DateText>🗓 This week: <DayOfWeek dayIndex={5} /></DateText>
           <ContentHolder>
             <div>
-              {!this.state.isLoaded ?
-                <LoadingBox />
+              {this.state.isLoaded && users.length > 0 ?
+                <Fragment>
+                  <Title>Hi <PersonName>{this.state.activeUserName}!</PersonName></Title>
+                  <p>It is your turn to pick this week.</p>
+                </Fragment>
                   :
-                <Title>Hi <PersonName>{this.state.activeUserName}!</PersonName></Title>
+                <Fragment>
+                  <LoadingBox />
+                  <DummyText />
+                </Fragment>
               }
-              <p>It is your turn to pick this week.</p>
             </div>
             <Icon role="presentation">🍔</Icon>
           </ContentHolder>
-          <UsersList users={this.state.users} activeUserIndex={this.state.activeUserIndex} />
+          {users.length > 1 && <UsersList users={users} activeUserIndex={this.state.activeUserIndex} /> }
+
         </Card>
       </Fragment>
     )
