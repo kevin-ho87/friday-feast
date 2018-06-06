@@ -33,15 +33,17 @@ exports.checkLength = functions.database.ref('/activeUserKey').onUpdate((change,
 });
 
 exports.updateLength = functions.database.ref('/users').onWrite((change, context) => {
-  const usersLength = change.after.val().length;
+  const usersVal = change.after.val();
+  const usersLength = (usersVal === null) ? 0 : usersVal.length;
+
   // Set users length on users array updated
   admin.database().ref('/usersLength').set(usersLength);
 
   return admin.database().ref('/activeUserKey').once('value', function(snap){
     const activeIndexVal = snap.val() * 1;
-    const lastItem = usersLength * 1 -1;
+    const lastItem = usersLength * 1 - 1;
 
-    if (activeIndexVal > lastItem) {
+    if ((activeIndexVal > lastItem) && usersLength > 0 ) {
       // Update active user index to last if index is more than total users when users is updated
       admin.database().ref('/activeUserKey').set(lastItem);
     }
