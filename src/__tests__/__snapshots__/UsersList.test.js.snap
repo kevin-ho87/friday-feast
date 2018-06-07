@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserItem component Render snapshot 1`] = `
+<UsersList__ListHolder>
+  <UsersList__List
+    isActive={false}
+    key="0"
+  >
+    Megatron
+  </UsersList__List>
+  <UsersList__List
+    isActive={false}
+    key="1"
+  >
+    Totoro
+  </UsersList__List>
+</UsersList__ListHolder>
+`;
